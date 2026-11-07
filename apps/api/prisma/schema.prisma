@@ -108,6 +108,7 @@ model CheckIn {
   transcript  String
   aiSummary   String        @map("ai_summary")
   domains     Json
+  questions   String[]      @default([])
   riskScore   Int           @map("risk_score")
   riskTier    RiskTier      @map("risk_tier")
   flags       String[]

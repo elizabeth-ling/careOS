@@ -56,7 +56,7 @@ function invalidateCheckIn(client: QueryClient, checkIn: Pick<CheckIn, "id" | "p
 // --- Queries ---------------------------------------------------------------
 
 export function useHealth() {
-  return useQuery({ queryKey: keys.health, queryFn: api.health });
+  return useQuery({ queryKey: keys.health, queryFn: api.health, refetchInterval: 30_000, staleTime: 15_000 });
 }
 
 export function useQueue(filter: QueueFilter = "all", sort: QueueSort = "risk") {

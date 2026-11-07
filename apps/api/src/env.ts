@@ -15,6 +15,12 @@ const isProduction = process.env.NODE_ENV === "production";
 
 const booleanFlag = z.enum(["true", "false"]).transform((value) => value === "true");
 
+/** An empty value (e.g. `ANTHROPIC_API_KEY=` in .env) counts as unset. */
+const optionalText = z
+  .string()
+  .optional()
+  .transform((value) => (value?.trim() ? value.trim() : undefined));
+
 const schema = z.object({
   // Hosted environments must set these explicitly: no fallback to the local
   // database, and no destructive demo reset unless it is switched on.
@@ -26,6 +32,17 @@ const schema = z.object({
   UPLOAD_DIR: z.string().min(1).default("./uploads"),
   AI_MODE: z.enum(["simulated", "live"]).default("simulated"),
   WEB_ORIGIN: z.string().min(1).default("http://localhost:5173"),
+
+  // Live AI (AI_MODE=live). Server-side only: none of these ever reach the browser.
+  ANTHROPIC_API_KEY: optionalText,
+  ANTHROPIC_MODEL: z.string().min(1).default("claude-sonnet-5-5"),
+  /** Speech-to-text provider. "whisper" is any Whisper-compatible /audio/transcriptions API. */
+  STT_PROVIDER: z.enum(["whisper", "none"]).default("whisper"),
+  STT_API_URL: z.string().url().default("https://api.openai.com/v1"),
+  STT_API_KEY: optionalText,
+  STT_MODEL: z.string().min(1).default("whisper-1"),
+  /** Trust X-Forwarded-For for the client IP (rate limiting). Only behind a proxy you control. */
+  TRUST_PROXY: booleanFlag.default(false),
 });
 
 const parsed = schema.parse(process.env);

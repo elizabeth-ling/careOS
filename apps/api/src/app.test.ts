@@ -76,6 +76,22 @@ describe("demo mode", () => {
   });
 });
 
+describe("check-in rate limiting", () => {
+  it("allows ten requests per minute and rejects the next one", async () => {
+    const limitedApp = createApp({ demoMode: false });
+    const request = () => limitedApp.request("/api/check-ins", { method: "POST" });
+
+    for (let count = 0; count < 10; count += 1) {
+      expect((await request()).status).toBe(400);
+    }
+
+    const limited = await request();
+    expect(limited.status).toBe(429);
+    expect(limited.headers.get("retry-after")).toMatch(/^\d+$/);
+    expect(errorResponseSchema.parse(await limited.json()).error).toMatch(/Too many check-ins/);
+  });
+});
+
 describe("CORS", () => {
   it("allows only the configured web origin", async () => {
     const allowed = await app.request("/api/nope", { headers: { origin: "http://localhost:5173" } });

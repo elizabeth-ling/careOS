@@ -118,6 +118,20 @@ export function dropUnmatchedQuotes(transcript: string, domains: Domains): Domai
   return result;
 }
 
+/**
+ * What the live pipeline asks Claude to extract from a transcript. Its JSON Schema
+ * is the strict tool input schema, so it stays within what strict tool use accepts
+ * (no numeric bounds: severity is an enum). The result is still re-validated,
+ * quotes are checked against the transcript and severities clamped on the server.
+ */
+export const extractionSchema = z.object({
+  domains: domainsSchema,
+  /** 2–3 clinical-style sentences. */
+  aiSummary: z.string(),
+  questions: z.array(z.string()),
+});
+export type Extraction = z.infer<typeof extractionSchema>;
+
 // ---------------------------------------------------------------------------
 // Table rows (as DTOs: dates are ISO strings, ids are uuids)
 // ---------------------------------------------------------------------------
@@ -172,6 +186,8 @@ export const checkInSchema = z.object({
   transcript: z.string(),
   aiSummary: z.string(),
   domains: domainsSchema,
+  /** Questions the caregiver asked in the check-in, for the nurse to answer. */
+  questions: z.array(z.string()),
   riskScore: z.number().int().min(0).max(100),
   riskTier: riskTierSchema,
   flags: z.array(z.string()),
@@ -314,10 +330,17 @@ export type ConfirmCallRequest = z.infer<typeof confirmCallRequestSchema>;
 export const errorResponseSchema = z.object({ error: z.string() });
 export type ErrorResponse = z.infer<typeof errorResponseSchema>;
 
+export const aiModeSchema = z.enum(["simulated", "live"]);
+export type AiMode = z.infer<typeof aiModeSchema>;
+
 export const healthResponseSchema = z.object({
   status: z.literal("ok"),
   database: z.literal("ok"),
-  aiMode: z.enum(["simulated", "live"]),
+  aiMode: aiModeSchema,
+  /** Whether live speech-to-text is configured and reachable. Always false when simulated. */
+  sttOk: z.boolean(),
+  /** Whether live Claude extraction is configured and reachable. Always false when simulated. */
+  llmOk: z.boolean(),
   demoMode: z.boolean(),
 });
 export type HealthResponse = z.infer<typeof healthResponseSchema>;
@@ -440,7 +463,7 @@ export const familyHomeResponseSchema = z.object({
   patient: patientSchema,
   caregiver: caregiverSchema,
   lastCheckIn: z
-    .object({ id, createdAt: timestamp, status: checkInStatusSchema })
+    .object({ id, createdAt: timestamp, status: checkInStatusSchema, isEmergency: z.boolean() })
     .nullable(),
   nextCalendarItem: calendarItemSchema.nullable(),
   careTeam: z.object({ nurse: nurseSchema, careHome: careHomeSchema }),

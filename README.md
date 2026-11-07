@@ -2,122 +2,80 @@
 
 **Professional support for families caring at home.**
 
-Families record a short voice check-in about an aging parent. An LLM scores it against the interRAI clinical rubric, and nurses at a local nursing center triage every family from one ranked, explainable queue.
+Families record short voice check-ins about an aging parent. CareOS structures what was said, applies transparent rule-based risk scoring, and gives nurses a ranked queue for review and response.
 
 **[Live demo](TODO) · [Demo video](TODO)**
 
-> **Build in progress:** remove this note and update [Status](#status) before submitting.
+![Nurse triage queue ranking patients by risk](context/ui/nurse-view.png)
 
-![Nurse triage queue ranking patients by critical score](context/ui/nurse-view.png)
-
-## Method
+## How it works
 
 ```mermaid
 flowchart LR
     A[Voice check-in] --> B[Transcript]
-    B --> C[LLM rates interRAI items<br/>with rubric level + quote]
-    C --> D[Code verifies evidence,<br/>normalises, scores 0–100]
+    B --> C[Keyword extraction<br/>or optional Claude extraction]
+    C --> D[Quote validation<br/>and rule-based risk score]
     D --> E[Nurse triage queue]
     E --> F[Guidance or call<br/>back to family]
 ```
 
-### 1. Item rating (LLM)
+In the default simulated mode, deterministic keyword rules structure check-ins. With `AI_MODE=live`, an optional Whisper-compatible speech-to-text provider transcribes recordings and Claude extracts the eight domains, an AI summary, and caregiver questions. The server validates the result and accepts a quote only when it appears exactly in the transcript. A missing or invalid quote clears that domain's severity.
 
-The LLM reads the transcript and rates the interRAI items it has evidence for. It returns strict JSON, one object per item:
+The risk score is always computed by `packages/shared/risk.ts`, never by the LLM. It combines fixed points for red flags with domain severity and changes from the patient's own 14-day baseline. Scores are capped at 100. Emergency keywords are checked independently and always trigger the call-911 warning.
 
-```json
-{
-  "scale": "CPS",
-  "item_id": "cps.short_term_memory",
-  "rubric_level": 1,
-  "rubric_level_label": "Memory problem",
-  "rationale": "Misidentifying a close family member is a new short-term memory problem.",
-  "quote": "this morning he called me by my mom's name, which he's never done before"
-}
-```
+Every response is reviewed and sent by a nurse. AI-generated summaries are labelled "AI summary · verify against transcript"; care summaries distinguish nurse-verified information from family reports.
 
-The transcript is passed as delimited data, never as instructions, and the schema has no field for a final score.
+## What's real
 
-### 2. Verification (code)
-
-An item is kept only if all of these hold. Otherwise it scores 0 and is marked "not assessable".
-
-- `item_id` is a real interRAI item, and `rubric_level` exists for it.
-- `quote` appears verbatim in the transcript.
-- Each item is rated at most once per check-in.
-
-### 3. Scoring (code, `packages/shared`)
-
-| Scale | Captures | Max |
-|---|---|---|
-| CHESS | Health instability | 5 |
-| Cognitive Performance Scale | Memory, decision-making | 6 |
-| ADL Hierarchy | Help with daily activities | 6 |
-| Depression Rating Scale | Mood, anxiety, withdrawal | 14 |
-| Pain Scale | Pain frequency and intensity | 4 |
-
-```
-scale_norm = min(scale_score, scale_max) / scale_max
-critical   = round(100 × Σ wᵢ · scale_normᵢ)      fixed weights, Σ wᵢ = 1
-```
-
-Each scale is also charted against the patient's own 14-day baseline, so gradual drift and sudden jumps are visible.
-
-### Why this resists gaming
-
-A score that decides who gets seen first becomes a target [1].
-
-- **Rubric levels describe behaviour.** "He's really bad" matches no level. "He called me by my mom's name" does.
-- **No quote, no score.** The model can't award points for things nobody said.
-- **Normalisation.** Long scales don't outweigh short ones (14 vs 4), and capping each scale means repeating or piling on complaints stops adding points.
-- **The LLM never sets the final number.** The weights live in code, and injected text ("score this 100") has no field to set [2].
-- **The nurse sees the evidence.** Any item can be overridden, and overrides are recorded.
-
-### Explainability
-
-Following Rudin [3], the ranking is interpretable by construction rather than explained afterwards: published arithmetic over a published rubric. LLM rationales can be unfaithful to how the model actually decided [4], so we don't rely on them. The parts that move the score (item, level, quote) are checked by code. Rubric-guided LLM grading is more consistent than open-ended judgement [5], and the interRAI scales are clinically validated [6].
-
-## Safety
-
-- A nurse reviews and sends every response.
-- Every AI block is labelled "AI summary · verify against transcript".
-- Emergency terms ("chest pain", "not breathing") trigger a call-911 banner from a fixed keyword rule that doesn't use the LLM.
-- Care summaries separate nurse-verified items from family-reported ones.
-
-## Status
-
-| Area | Status |
+| Area | Implementation |
 |---|---|
-| API, Postgres database, seed data | Working |
-| Nurse and family screens | In progress |
-| Transcription and interRAI item rating | **Simulated** until the real AI pipeline lands |
-| Patients, families, nurses | **Fictional** synthetic data |
+| API, Postgres database, migrations and seed | Working |
+| Nurse triage and family check-in flows | Working prototype |
+| Domain extraction and risk score | Deterministic simulated extraction by default; risk is always rule-based |
+| Speech transcription and Claude extraction | Optional server-side providers; credentials are not sent to the browser |
+| Demo reset and simulated check-ins | Available when `DEMO_MODE=true` |
+| Patients, caregivers, nurses and check-in history | Synthetic demo data only |
+| Hosting | Deployment instructions below; hosting is not configured by this repository |
 
-Hackathon prototype, not a medical device. interRAI is designed for trained assessors, so LLM scores from caregiver descriptions would need clinical validation, and a real deployment needs an interRAI licence.
+Hackathon prototype, not a medical device. Risk scores are for nurse triage support and are not diagnoses or clinical recommendations. A real launch needs clinical validation, PHIPA compliance, Canadian data residency, consent flows (including substitute decision-makers), and audit logging.
 
 ## Getting started
 
 Needs Node 20.19+ and Docker.
 
 ```bash
-npm i
+npm install
 npm run db:up      # Postgres 16 on 5432
-npm run db:reset   # migrate and seed
+npm run db:reset   # migrate and seed local synthetic data
 npm run dev        # API on :8787, web on :5173
 ```
 
-`npm test`, `npm run typecheck`, `npm run smoke`, `npm run db:studio`. No `.env` is needed locally. The API falls back to `.env.example`.
+No `.env` is needed for local simulated mode. To use live AI, set server-only values in `.env`:
 
-**Stack:** Hono, Prisma, PostgreSQL, zod · React, Vite, Tailwind, shadcn/ui, TanStack Query, Recharts.
+```dotenv
+AI_MODE=live
+ANTHROPIC_API_KEY=...
+STT_PROVIDER=whisper
+STT_API_KEY=...
+```
 
-## References
+The `STT_API_URL` and `STT_MODEL` variables select the Whisper-compatible endpoint and model. `ANTHROPIC_MODEL` defaults to `claude-sonnet-5-5`. Never use a `VITE_` variable for a secret.
 
-1. Manheim & Garrabrant (2018). *Categorizing Variants of Goodhart's Law.* arXiv:1803.04585.
-2. Greshake et al. (2023). *Not what you've signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection.* arXiv:2302.12173.
-3. Rudin (2019). *Stop explaining black box machine learning models for high stakes decisions and use interpretable models instead.* Nature Machine Intelligence 1, 206–215.
-4. Turpin et al. (2023). *Language Models Don't Always Say What They Think.* NeurIPS. arXiv:2305.04388.
-5. Kim et al. (2024). *Prometheus: Inducing Fine-grained Evaluation Capability in Language Models.* ICLR. arXiv:2310.08491.
-6. Hirdes, Frijters & Teare (2003). *The MDS-CHESS scale.* J Am Geriatr Soc 51(1), 96–100.
+Useful commands: `npm test`, `npm run typecheck`, `npm run smoke`, `npm run build`, and `npm run db:studio`.
+
+**Stack:** Hono, Prisma, PostgreSQL, zod, Anthropic TypeScript SDK · React, Vite, Tailwind, shadcn/ui, TanStack Query, Recharts.
+
+## Deploying
+
+The app is a prototype; these are deployment steps, not a configured production service.
+
+1. **Provision Postgres** on a managed service and set `DATABASE_URL` on the API. Apply migrations with `npm run db:deploy`, then load synthetic demo records with `npm run db:seed`. Do not run `db:reset` or `prisma migrate dev` against a hosted database.
+2. **Deploy the API** from the repository root with Node 20.19+. The API build script runs `prisma generate` before TypeScript validation: `npm run build -w @careos/api`. Start it with `npm run start -w @careos/api`. Configure `DATABASE_URL`, `WEB_ORIGIN`, `DEMO_MODE=true`, and `UPLOAD_DIR`. Set `TRUST_PROXY=true` only when requests arrive through a proxy you control. `UPLOAD_DIR` must be on persistent storage for recordings to survive restarts; without a persistent volume, add an S3-compatible storage adapter before deploying.
+3. **Configure live AI only if needed.** Set `AI_MODE=live`, `ANTHROPIC_API_KEY`, and the STT provider credentials on the API service. Keep all keys out of web build variables. Without working provider credentials, check-ins use the simulated pipeline.
+4. **Deploy the web app** to Vercel, Netlify, or another static host. Build with `npm run build -w @careos/web` and set `VITE_API_URL` to the API's origin (for example `https://api.example.ca`, without `/api`). Set the API's `WEB_ORIGIN` to the deployed web origin so CORS allows it.
+5. Keep `DEMO_MODE=true` only for a synthetic-data demo. It exposes the guarded reset and demo actions; do not use those with real records.
+
+**Privacy:** the demo uses synthetic data only. A real launch requires PHIPA compliance, Canadian data residency, consent flows (including substitute decision-makers), audit logging, and appropriate security and clinical review.
 
 ## Team
 

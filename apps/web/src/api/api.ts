@@ -39,7 +39,8 @@ import {
 import type { ZodType } from "zod";
 import { connection } from "./connection";
 
-const BASE = "/api";
+const apiOrigin = import.meta.env.VITE_API_URL?.trim().replace(/\/+$/, "");
+const BASE = `${apiOrigin ?? ""}/api`;
 
 /** The API answered with an error status and an `{ error }` message. */
 export class ApiError extends Error {

@@ -35,10 +35,11 @@ async function loadDemoIdentity() {
   };
 }
 
-export function useDemoIdentity() {
+export function useDemoIdentity(enabled = true) {
   return useQuery({
     queryKey: ["demo-identity"],
     queryFn: loadDemoIdentity,
+    enabled,
     staleTime: Infinity,
     gcTime: Infinity,
   });

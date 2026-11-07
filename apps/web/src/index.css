@@ -152,3 +152,41 @@
 [data-sonner-toast] {
   box-shadow: none !important;
 }
+
+@page {
+  margin: 0.6in;
+}
+
+@media print {
+  .print-hide {
+    display: none !important;
+  }
+
+  html,
+  body,
+  #root {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  body {
+    font-size: 12pt;
+  }
+
+  .care-summary {
+    max-width: none !important;
+    padding: 0 !important;
+  }
+
+  .care-summary * {
+    color: #000 !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .care-summary section,
+  .care-summary article {
+    break-inside: avoid;
+    background: #fff !important;
+  }
+}

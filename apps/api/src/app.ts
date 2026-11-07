@@ -52,6 +52,7 @@ import {
   toPatient,
 } from "./mappers";
 import { seed } from "./seed";
+import { getProviderHealth } from "./services/ai/health";
 import { changesFromBaseline } from "./services/baseline";
 import { getCalendar } from "./services/calendar";
 import { buildGuidanceDrafts } from "./services/guidanceDrafts";
@@ -65,6 +66,7 @@ import {
   HERO_PATIENT_NAME,
   HERO_TRANSCRIPT,
 } from "./services/transcripts";
+import { checkInRateLimit } from "./services/rateLimit";
 import { getTrends } from "./services/trends";
 
 const VOX_DELAY_MS = 1500;
@@ -169,6 +171,7 @@ export interface AppOptions {
 
 export function createApp(options: AppOptions = {}) {
   const demoMode = options.demoMode ?? env.DEMO_MODE;
+  const limitCheckIns = checkInRateLimit(env.TRUST_PROXY);
 
   const api = new Hono();
 
@@ -176,8 +179,16 @@ export function createApp(options: AppOptions = {}) {
 
   api.get("/health", async (c) => {
     await prisma.$queryRaw`SELECT 1`;
+    const providerHealth =
+      env.AI_MODE === "live" ? await getProviderHealth() : { sttOk: false, llmOk: false };
     return c.json(
-      healthResponseSchema.parse({ status: "ok", database: "ok", aiMode: env.AI_MODE, demoMode }),
+      healthResponseSchema.parse({
+        status: "ok",
+        database: "ok",
+        aiMode: env.AI_MODE,
+        ...providerHealth,
+        demoMode,
+      }),
     );
   });
 
@@ -346,7 +357,7 @@ export function createApp(options: AppOptions = {}) {
       prisma.checkIn.findFirst({
         where: { patientId: id },
         orderBy: { createdAt: "desc" },
-        select: { id: true, createdAt: true, status: true },
+        select: { id: true, createdAt: true, status: true, isEmergency: true },
       }),
       getCalendar(id),
     ]);
@@ -363,6 +374,7 @@ export function createApp(options: AppOptions = {}) {
 
   api.post(
     "/check-ins",
+    limitCheckIns,
     // Multipart framing adds a little on top of the audio itself.
     bodyLimit({
       maxSize: MAX_AUDIO_BYTES + 1024 * 1024,

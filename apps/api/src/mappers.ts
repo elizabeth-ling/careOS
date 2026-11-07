@@ -81,6 +81,7 @@ export function toCheckIn(row: DbCheckIn): CheckIn {
     transcript: row.transcript,
     aiSummary: row.aiSummary,
     domains: domainsSchema.parse(row.domains),
+    questions: row.questions,
     riskScore: row.riskScore,
     riskTier: row.riskTier,
     flags: row.flags,

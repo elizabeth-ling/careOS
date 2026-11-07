@@ -16,7 +16,7 @@ afterEach(() => {
 
 describe("api client", () => {
   it("parses a valid response with the shared schema", async () => {
-    respond(200, JSON.stringify({ status: "ok", database: "ok", aiMode: "simulated", demoMode: true }));
+    respond(200, JSON.stringify({ status: "ok", database: "ok", aiMode: "simulated", sttOk: false, llmOk: false, demoMode: true }));
     await expect(api.health()).resolves.toMatchObject({ status: "ok" });
     expect(connection.isReachable()).toBe(true);
   });
@@ -39,7 +39,7 @@ describe("api client", () => {
     await expect(api.health()).rejects.toBeInstanceOf(ApiUnreachableError);
     expect(connection.isReachable()).toBe(false);
 
-    respond(200, JSON.stringify({ status: "ok", database: "ok", aiMode: "simulated", demoMode: true }));
+    respond(200, JSON.stringify({ status: "ok", database: "ok", aiMode: "simulated", sttOk: false, llmOk: false, demoMode: true }));
     await api.health();
     expect(connection.isReachable()).toBe(true);
   });

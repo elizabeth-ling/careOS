@@ -8,17 +8,7 @@ import { Placeholder } from "@/components/Placeholder";
 export const FamiliesPage = () => <Placeholder title="Families" task={3} />;
 export const MessagesPage = () => <Placeholder title="Messages" task={3} />;
 export const ScheduledCallsPage = () => <Placeholder title="Scheduled calls" task={3} />;
-export const CareSummariesPage = () => <Placeholder title="Care summaries" task={5} />;
 export const SettingsPage = () => <Placeholder title="Settings" task={5} />;
-
-// --- Shared (Task 5) ---
-export function CareSummaryPage() {
-  return (
-    <main className="mx-auto max-w-[1000px] px-4 py-10">
-      <Placeholder title="Care summary" task={5} />
-    </main>
-  );
-}
 
 export function NotFoundPage() {
   return (

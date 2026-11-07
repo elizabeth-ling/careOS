@@ -13,6 +13,7 @@ import {
 import { NavLink, Outlet } from "react-router";
 import { useQueue } from "@/api/hooks";
 import { ConnectionBanner } from "@/components/ConnectionBanner";
+import { DemoControls } from "@/components/DemoControls";
 import { Logo } from "@/components/Logo";
 import { RoleSwitcher } from "@/components/RoleSwitcher";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
@@ -143,6 +144,7 @@ function Sidebar() {
         </div>
 
         <NavItem to="/nurse/settings" icon={SlidersHorizontal} label="Settings" />
+        <DemoControls sidebar />
         <Separator />
         <AccountBlock />
       </div>

@@ -12,6 +12,9 @@ import { prisma } from "../db";
 import { env } from "../env";
 import { HttpError } from "../errors";
 import { loadHistory, scoreAgainstHistory } from "./baseline";
+import { extractWithClaude } from "./ai/claudeExtractor";
+import { withTimeout } from "./ai/timeout";
+import { transcribe } from "./ai/transcribe";
 import { extractDomains } from "./extractDomains";
 import { HERO_DURATION_SEC, HERO_TRANSCRIPT } from "./transcripts";
 
@@ -52,9 +55,44 @@ async function saveAudio(audio: File): Promise<string> {
   return fileName;
 }
 
-/** Task 5 adds real speech-to-text behind this. */
-async function getTranscript(input: ProcessCheckInInput): Promise<string> {
-  return input.transcriptOverride || HERO_TRANSCRIPT;
+export const PIPELINE_TIMEOUT_MS = 25_000;
+
+/** Sentences ending in "?", for the simulated path. */
+export function questionsFrom(transcript: string): string[] {
+  return (transcript.match(/[^.!?]*\?/g) ?? []).map((q) => q.trim()).filter(Boolean).slice(0, 5);
+}
+
+interface Analysis {
+  transcript: string;
+  domains: Domains;
+  aiSummary: string | null;
+  questions: string[];
+  source: CheckInSource;
+}
+
+async function simulatedAnalysis(input: ProcessCheckInInput): Promise<Analysis> {
+  const transcript = input.transcriptOverride || HERO_TRANSCRIPT;
+  const domains = domainsSchema.parse(dropUnmatchedQuotes(transcript, await extractDomains(transcript)));
+  return { transcript, domains, aiSummary: null, questions: questionsFrom(transcript), source: input.source };
+}
+
+/**
+ * AI_MODE=live: real speech-to-text (when there's audio) and Claude extraction.
+ * Any failure, or the whole thing taking over 25s, falls back to the simulated path.
+ * Simulated check-ins (the demo buttons) always stay deterministic.
+ */
+async function analyse(input: ProcessCheckInInput, audioPath: string | null): Promise<Analysis> {
+  if (env.AI_MODE !== "live" || input.source === "simulated") return simulatedAnalysis(input);
+  try {
+    return await withTimeout("Live AI pipeline", PIPELINE_TIMEOUT_MS, async (signal) => {
+      const transcript = audioPath ? await transcribe(audioPath, signal) : input.transcriptOverride || HERO_TRANSCRIPT;
+      const extraction = await extractWithClaude(transcript, signal);
+      return { transcript, ...extraction, source: input.source };
+    });
+  } catch (error) {
+    console.warn("Live AI failed; using the simulated pipeline:", error instanceof Error ? error.message : error);
+    return { ...(await simulatedAnalysis(input)), source: "simulated" };
+  }
 }
 
 const SUMMARY_ORDER = DOMAIN_KEYS;
@@ -79,10 +117,7 @@ export async function processCheckIn(input: ProcessCheckInInput) {
   const audioPath = input.audio ? await saveAudio(input.audio) : null;
 
   try {
-    const transcript = await getTranscript(input);
-    const domains = domainsSchema.parse(
-      dropUnmatchedQuotes(transcript, await extractDomains(transcript)),
-    );
+    const { transcript, domains, aiSummary, questions, source } = await analyse(input, audioPath);
 
     const at = new Date();
     const history = await loadHistory(input.patientId, at);
@@ -95,14 +130,17 @@ export async function processCheckIn(input: ProcessCheckInInput) {
         durationSec: input.durationSec ?? HERO_DURATION_SEC,
         audioPath,
         transcript,
-        aiSummary: buildAiSummary(domains, result.flags),
+        aiSummary: aiSummary
+          ? `${aiSummary}${result.flags.length > 0 ? ` Flagged: ${result.flags.join(", ")}.` : ""}`
+          : buildAiSummary(domains, result.flags),
         domains,
+        questions,
         riskScore: result.score,
         riskTier: result.tier,
         flags: result.flags,
         isEmergency: result.isEmergency,
         status: "received",
-        source: input.source,
+        source,
         createdAt: at,
       },
     });

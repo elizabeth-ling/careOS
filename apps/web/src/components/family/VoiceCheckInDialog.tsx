@@ -346,7 +346,7 @@ function heardDomains(checkIn: CheckIn): DomainKey[] {
     .slice(0, 4);
 }
 
-function DoneState({
+export function DoneState({
   checkIn,
   nurseFirstName,
   onClose,
