@@ -11,13 +11,6 @@ export const ScheduledCallsPage = () => <Placeholder title="Scheduled calls" tas
 export const CareSummariesPage = () => <Placeholder title="Care summaries" task={5} />;
 export const SettingsPage = () => <Placeholder title="Settings" task={5} />;
 
-// --- Family (Task 4) ---
-export const FamilyHomePage = () => <Placeholder title="Family home" task={4} />;
-export const FamilyCheckInsPage = () => <Placeholder title="Check-ins" task={4} />;
-export const FamilyHistoryPage = () => <Placeholder title="Health history" task={4} />;
-export const FamilyCareTeamPage = () => <Placeholder title="Contact care team" task={4} />;
-export const FamilyCalendarPage = () => <Placeholder title="Calendar" task={4} />;
-
 // --- Shared (Task 5) ---
 export function CareSummaryPage() {
   return (

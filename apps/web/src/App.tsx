@@ -6,16 +6,16 @@ import {
   CareSummariesPage,
   CareSummaryPage,
   FamiliesPage,
-  FamilyCalendarPage,
-  FamilyCareTeamPage,
-  FamilyCheckInsPage,
-  FamilyHistoryPage,
-  FamilyHomePage,
   MessagesPage,
   NotFoundPage,
   ScheduledCallsPage,
   SettingsPage,
 } from "@/pages/placeholders";
+import { FamilyCalendarPage } from "@/pages/family/FamilyCalendarPage";
+import { FamilyCareTeamPage } from "@/pages/family/FamilyCareTeamPage";
+import { FamilyCheckInsPage } from "@/pages/family/FamilyCheckInsPage";
+import { FamilyHistoryPage } from "@/pages/family/FamilyHistoryPage";
+import { FamilyHomePage } from "@/pages/family/FamilyHomePage";
 import { PatientDetailPage } from "@/pages/nurse/PatientDetailPage";
 import { TriageQueuePage } from "@/pages/nurse/TriageQueuePage";
 

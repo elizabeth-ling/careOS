@@ -379,6 +379,7 @@ export function createApp(options: AppOptions = {}) {
         caregiverId: form.caregiverId,
         transcriptOverride:
           typeof form.transcriptOverride === "string" ? form.transcriptOverride : undefined,
+        durationSec: typeof form.durationSec === "string" ? form.durationSec : undefined,
       });
       if (!fields.success) throw new HttpError(400, describeZodError(fields.error));
 

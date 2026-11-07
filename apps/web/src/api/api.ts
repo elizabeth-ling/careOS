@@ -176,6 +176,7 @@ export const api = {
     form.set("patientId", valid.patientId);
     form.set("caregiverId", valid.caregiverId);
     if (valid.transcriptOverride) form.set("transcriptOverride", valid.transcriptOverride);
+    if (valid.durationSec) form.set("durationSec", String(valid.durationSec));
     if (audio) form.set("audio", audio, audio instanceof File ? audio.name : "check-in.webm");
     return request("/check-ins", checkInSchema, { method: "POST", body: form });
   },

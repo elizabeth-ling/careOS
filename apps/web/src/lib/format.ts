@@ -88,3 +88,35 @@ export function formatDuration(seconds: number): string {
 export function formatHours(hours: number | null): string {
   return hours === null ? "–" : `${hours.toFixed(1)}h`;
 }
+
+/** "Good morning" before noon, "Good afternoon" until 6 PM, then "Good evening". */
+export function greetingFor(date = new Date()): string {
+  const hour = date.getHours();
+  if (hour < 12) return "Good morning";
+  if (hour < 18) return "Good afternoon";
+  return "Good evening";
+}
+
+/** "today at 1:43 PM", "yesterday at 9:05 AM", "Nov 4 at 3:15 PM". */
+export function formatDayAt(iso: string, now = new Date()): string {
+  const date = new Date(iso);
+  const time = date.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
+  const days = daysBetween(date, now);
+  if (days === 0) return `today at ${time}`;
+  if (days === 1) return `yesterday at ${time}`;
+  return `${date.toLocaleDateString("en-US", { month: "short", day: "numeric" })} at ${time}`;
+}
+
+/** "Mon Nov 9 at 10:00 AM". */
+export function formatWeekdayAt(iso: string): string {
+  const date = new Date(iso);
+  const day = date.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" });
+  const time = date.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
+  return `${day.replace(",", "")} at ${time}`;
+}
+
+/** 83 → "1:23", for a live recording timer (always mm:ss). */
+export function formatTimer(seconds: number): string {
+  const whole = Math.max(0, Math.floor(seconds));
+  return `${String(Math.floor(whole / 60)).padStart(2, "0")}:${String(whole % 60).padStart(2, "0")}`;
+}

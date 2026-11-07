@@ -19,6 +19,7 @@
   --sage-200: #c7d3b0;
   --line: #e3e8d6;
   --table-head: #fafcf5;
+  --surface-hover: #fcfef7;
   --muted-text: #5b6150;
   --body-2: #3f4535;
   --urgent: #b42318;
@@ -67,6 +68,7 @@
   --color-sage-100: var(--sage-100);
   --color-sage-200: var(--sage-200);
   --color-table-head: var(--table-head);
+  --color-surface-hover: var(--surface-hover);
   --color-body-2: var(--body-2);
   --color-urgent: var(--urgent);
   --color-urgent-bg: var(--urgent-bg);

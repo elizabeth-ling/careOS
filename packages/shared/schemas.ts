@@ -274,6 +274,8 @@ export const createCheckInFieldsSchema = z.object({
   patientId: id,
   caregiverId: id,
   transcriptOverride: z.string().trim().max(20000).optional(),
+  /** Length of the recording in seconds, measured by the browser. */
+  durationSec: z.coerce.number().int().min(1).max(600).optional(),
 });
 export type CreateCheckInFields = z.infer<typeof createCheckInFieldsSchema>;
 

@@ -21,6 +21,7 @@ The visual source of truth is the screenshots in `context/ui/` (`nurse-view.png`
 | sage-50 / 100 / 200 | `#EEF3E2` / `#DDE6C9` / `#C7D3B0` | active nav, fills, avatars, decorative shapes | `bg-sage-50`, `bg-sage-100`, `bg-sage-200` (shadcn `secondary`, `muted`, `accent` = sage-50) |
 | border | `#E3E8D6` | every 1px border | `border-border` (default for every `border`; shadcn `input`) |
 | table-head | `#FAFCF5` | table header and footnote rows | `bg-table-head` |
+| surface-hover | `#FCFEF7` | hovered family home blocks (with a sage-200 border) | `bg-surface-hover` |
 | muted / body-2 | `#5B6150` / `#3F4535` | secondary text | `text-muted-foreground` / `text-body-2` |
 | urgent | `#B42318` on `#FEF3F2` | risk ≥ 70 | `text-urgent` on `bg-urgent-bg` (shadcn `destructive`) |
 | watch | `#B54708` on `#FFF6E5` | risk 40–69 | `text-watch` on `bg-watch-bg` |

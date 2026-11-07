@@ -1,0 +1,13 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - link "CareOS family home" [ref=e5] [cursor=pointer]:
+        - /url: /family
+        - generic [ref=e6]: CareOS
+      - navigation "Switch view" [ref=e13]:
+        - link "Family view" [ref=e14] [cursor=pointer]:
+          - /url: /family
+        - link "Nurse view" [ref=e15] [cursor=pointer]:
+          - /url: /nurse
+    - main [ref=e19]
+  - region "Notifications alt+T"

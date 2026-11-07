@@ -94,11 +94,13 @@ export function useTrends(patientId: string | undefined, days = 42) {
   });
 }
 
-export function useNurseActions(patientId: string | undefined) {
+/** `poll` keeps the list live, e.g. so a family sees the nurse's reply without a reload. */
+export function useNurseActions(patientId: string | undefined, { poll = false } = {}) {
   return useQuery({
     queryKey: keys.nurseActions(patientId ?? ""),
     queryFn: () => api.nurseActions(patientId!),
     enabled: Boolean(patientId),
+    refetchInterval: poll ? POLL_MS : false,
   });
 }
 
@@ -141,6 +143,8 @@ export function useCalendar(patientId: string | undefined) {
     queryKey: keys.calendar(patientId ?? ""),
     queryFn: () => api.calendar(patientId!),
     enabled: Boolean(patientId),
+    // A nurse confirming a call request in another window shows up here.
+    refetchInterval: POLL_MS,
   });
 }
 
