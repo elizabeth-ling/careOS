@@ -1,0 +1,510 @@
+- generic:
+  - generic:
+    - generic:
+      - generic:
+        - complementary [aria-hidden]:
+          - link:
+            - /url: /nurse
+            - generic: CareOS
+          - navigation:
+            - link:
+              - /url: /nurse
+              - generic: Triage queue
+              - generic:
+                - text: "4"
+                - generic: unreviewed
+            - link:
+              - /url: /nurse/families
+              - generic: Families
+            - link:
+              - /url: /nurse/messages
+              - generic: Messages
+            - link:
+              - /url: /nurse/calls
+              - generic: Scheduled calls
+            - link:
+              - /url: /nurse/summaries
+              - generic: Care summaries
+          - generic:
+            - generic:
+              - paragraph: On shift
+              - paragraph: 3 nurses · 8 families · until 7 PM
+            - link:
+              - /url: /nurse/settings
+              - generic: Settings
+            - button:
+              - generic: PS
+              - generic:
+                - generic: Priya Sharma, RN
+                - generic: Maple Grove Care Home
+              - generic: Account
+        - generic:
+          - banner [aria-hidden]:
+            - search:
+              - generic: Search patients, families, notes
+              - searchbox
+            - generic:
+              - navigation:
+                - link:
+                  - /url: /family
+                  - text: Family view
+                - link:
+                  - /url: /nurse
+                  - text: Nurse view
+              - button:
+                - generic: Notifications
+          - main:
+            - generic:
+              - region [aria-hidden]:
+                - link:
+                  - /url: /nurse
+                  - text: Triage queue
+                - generic:
+                  - generic:
+                    - generic: MO
+                    - generic:
+                      - generic:
+                        - generic:
+                          - heading [level=1]: Margaret Okafor
+                      - paragraph: "88 · Osteoporosis, CHF · Caregiver: David Okafor (son) · Maple Grove Care Home"
+                      - generic:
+                        - generic:
+                          - generic: Risk score
+                          - text: "74"
+                        - list:
+                          - listitem:
+                            - generic: Fall reported
+                          - listitem:
+                            - generic: Mobility ↓
+                - generic:
+                  - button: Send guidance
+                  - button: Schedule call
+                  - button [disabled]: Reviewed
+                  - link:
+                    - /url: /summary/5c7e0c51-3c4b-49cb-bd93-5613bb118358
+                    - text: Generate care summary
+              - generic:
+                - generic [aria-hidden]:
+                  - region:
+                    - generic:
+                      - generic:
+                        - heading [level=2]: AI summary
+                        - paragraph: Latest check-in · from David · Today, 2:15 PM · 0:41
+                      - generic: Reviewed
+                    - region:
+                      - paragraph: AI summary · verify against transcript
+                      - generic: "Sleep slightly unsettled. Serious mobility event reported. Seems a little off or low. Mild aches or soreness. Flagged: Fall reported, Mobility ↓."
+                  - region:
+                    - generic:
+                      - generic:
+                        - heading [level=2]: Changes from baseline
+                        - paragraph: Compared with this patient's own last 14 days
+                    - paragraph: No changes from baseline.
+                  - region:
+                    - generic:
+                      - generic:
+                        - heading [level=2]: Domain trends
+                        - paragraph: "Severity 0–3 over 6 weeks. Shaded: this patient's baseline."
+                    - generic:
+                      - generic:
+                        - heading [level=4]: Appetite
+                        - paragraph: Now 0/3 · baseline 0.0
+                        - img:
+                          - generic:
+                            - generic:
+                              - application
+                      - generic:
+                        - heading [level=4]: Sleep
+                        - paragraph: Now 1/3 · baseline 1.0
+                        - img:
+                          - generic:
+                            - generic:
+                              - application
+                      - generic:
+                        - heading [level=4]: Mobility
+                        - paragraph: Now 3/3 · baseline 0.5
+                        - img:
+                          - generic:
+                            - generic:
+                              - application
+                      - generic:
+                        - heading [level=4]: Cognition
+                        - paragraph: Now 0/3 · baseline 0.0
+                        - img:
+                          - generic:
+                            - generic:
+                              - application
+                      - generic:
+                        - heading [level=4]: Mood
+                        - paragraph: Now 1/3 · baseline 1.0
+                        - img:
+                          - generic:
+                            - generic:
+                              - application
+                      - generic:
+                        - heading [level=4]: Pain
+                        - paragraph: Now 1/3 · baseline 0.2
+                        - img:
+                          - generic:
+                            - generic:
+                              - application
+                      - generic:
+                        - heading [level=4]: Medications
+                        - paragraph: Now 0/3 · baseline 0.0
+                        - img:
+                          - generic:
+                            - generic:
+                              - application
+                      - generic:
+                        - heading [level=4]: Caregiver strain
+                        - paragraph: Now 0/3 · baseline 0.0
+                        - img:
+                          - generic:
+                            - generic:
+                              - application
+                  - region:
+                    - generic:
+                      - generic:
+                        - heading [level=2]: Transcript
+                        - paragraph: Today, 2:15 PM · 0:41
+                    - generic:
+                      - generic: 0:41
+                      - generic: No audio was stored for this check-in. The transcript is below.
+                    - blockquote:
+                      - text: “
+                      - mark:
+                        - text: Mom fell in the bathroom this morning when she got up.
+                        - generic: (Mobility)
+                      - mark:
+                        - text: She says her hip is sore but she can still walk with help.
+                        - generic: (Pain)
+                      - mark:
+                        - text: She was a bit restless at bedtime and she seemed a bit down after it all.
+                        - generic: (Sleep)
+                      - text: ”
+                - generic:
+                  - region [aria-hidden]:
+                    - generic:
+                      - generic:
+                        - heading [level=2]: Caregiver wellbeing
+                        - paragraph: David Okafor · caregiver strain, 6 weeks
+                    - generic:
+                      - heading [level=4]: Caregiver strain
+                      - paragraph: Now 0/3 · baseline 0.0
+                      - img:
+                        - generic:
+                          - generic:
+                            - application
+                    - region:
+                      - paragraph: AI summary · verify against transcript
+                      - generic: Not mentioned in this check-in.
+                  - region [aria-hidden]:
+                    - generic:
+                      - generic:
+                        - heading [level=2]: Check-in history
+                        - paragraph: 17 check-ins
+                    - list:
+                      - listitem:
+                        - button [pressed]:
+                          - generic:
+                            - generic: Risk score
+                            - text: "74"
+                          - generic:
+                            - generic: Today, 2:15 PM
+                            - generic: Fall reported, Mobility ↓
+                          - generic: Reviewed
+                      - listitem:
+                        - button:
+                          - generic:
+                            - generic: Risk score
+                            - text: "12"
+                          - generic:
+                            - generic: Nov 5, 1:53 PM
+                            - generic: No changes
+                          - generic: New
+                      - listitem:
+                        - button:
+                          - generic:
+                            - generic: Risk score
+                            - text: "12"
+                          - generic:
+                            - generic: Nov 4, 1:31 PM
+                            - generic: No changes
+                          - generic: Reviewed
+                      - listitem:
+                        - button:
+                          - generic:
+                            - generic: Risk score
+                            - text: "12"
+                          - generic:
+                            - generic: Nov 2, 4:13 PM
+                            - generic: No changes
+                          - generic: Reviewed
+                      - listitem:
+                        - button:
+                          - generic:
+                            - generic: Risk score
+                            - text: "12"
+                          - generic:
+                            - generic: Oct 30, 5:00 PM
+                            - generic: No changes
+                          - generic: Guidance sent
+                      - listitem:
+                        - button:
+                          - generic:
+                            - generic: Risk score
+                            - text: "12"
+                          - generic:
+                            - generic: Oct 27, 4:55 PM
+                            - generic: No changes
+                          - generic: Reviewed
+                      - listitem:
+                        - button:
+                          - generic:
+                            - generic: Risk score
+                            - text: "12"
+                          - generic:
+                            - generic: Oct 24, 5:03 PM
+                            - generic: No changes
+                          - generic: Reviewed
+                      - listitem:
+                        - button:
+                          - generic:
+                            - generic: Risk score
+                            - text: "12"
+                          - generic:
+                            - generic: Oct 23, 4:54 PM
+                            - generic: No changes
+                          - generic: Guidance sent
+                      - listitem:
+                        - button:
+                          - generic:
+                            - generic: Risk score
+                            - text: "12"
+                          - generic:
+                            - generic: Oct 21, 4:24 PM
+                            - generic: No changes
+                          - generic: Reviewed
+                      - listitem:
+                        - button:
+                          - generic:
+                            - generic: Risk score
+                            - text: "12"
+                          - generic:
+                            - generic: Oct 18, 3:25 PM
+                            - generic: No changes
+                          - generic: Reviewed
+                      - listitem:
+                        - button:
+                          - generic:
+                            - generic: Risk score
+                            - text: "12"
+                          - generic:
+                            - generic: Oct 17, 3:34 PM
+                            - generic: No changes
+                          - generic: Guidance sent
+                      - listitem:
+                        - button:
+                          - generic:
+                            - generic: Risk score
+                            - text: "12"
+                          - generic:
+                            - generic: Oct 15, 4:00 PM
+                            - generic: No changes
+                          - generic: Reviewed
+                      - listitem:
+                        - button:
+                          - generic:
+                            - generic: Risk score
+                            - text: "12"
+                          - generic:
+                            - generic: Oct 12, 4:12 PM
+                            - generic: No changes
+                          - generic: Reviewed
+                      - listitem:
+                        - button:
+                          - generic:
+                            - generic: Risk score
+                            - text: "12"
+                          - generic:
+                            - generic: Oct 9, 4:22 PM
+                            - generic: No changes
+                          - generic: Guidance sent
+                      - listitem:
+                        - button:
+                          - generic:
+                            - generic: Risk score
+                            - text: "12"
+                          - generic:
+                            - generic: Oct 7, 4:44 PM
+                            - generic: No changes
+                          - generic: Reviewed
+                      - listitem:
+                        - button:
+                          - generic:
+                            - generic: Risk score
+                            - text: "12"
+                          - generic:
+                            - generic: Oct 6, 4:14 PM
+                            - generic: No changes
+                          - generic: Reviewed
+                      - listitem:
+                        - button:
+                          - generic:
+                            - generic: Risk score
+                            - text: "20"
+                          - generic:
+                            - generic: Oct 4, 4:44 PM
+                            - generic: No changes
+                          - generic: Guidance sent
+                  - region "Care notes":
+                    - generic [aria-hidden]:
+                      - generic:
+                        - heading [level=2]: Care notes
+                    - list [aria-hidden]:
+                      - listitem:
+                        - generic:
+                          - generic: Call note
+                          - generic: Documented via Vox Advantage
+                        - paragraph:
+                          - text: Priya Sharma, RN ·
+                          - time: Just now
+                        - region:
+                          - paragraph: AI summary · verify against transcript
+                          - generic:
+                            - generic:
+                              - generic:
+                                - term: Reason
+                                - definition: "Call with David Okafor (Son) about Margaret Okafor: Fall reported, Mobility ↓."
+                              - generic:
+                                - term: Assessment
+                                - definition: Caregiver describes the changes above. No emergency symptoms reported during the call.
+                              - generic:
+                                - term: Plan
+                                - definition: Continue daily check-ins. Caregiver to report any new symptoms or changes straight away.
+                              - generic:
+                                - term: Follow-up
+                                - definition: Nurse to review the next check-in and call back within 48 hours.
+                      - listitem:
+                        - generic: Check-in reviewed
+                        - paragraph:
+                          - text: Priya Sharma, RN ·
+                          - time: Just now
+                      - listitem:
+                        - generic: Check-in reviewed
+                        - paragraph:
+                          - text: Priya Sharma, RN ·
+                          - time: 3 days ago
+                      - listitem:
+                        - generic: Check-in reviewed
+                        - paragraph:
+                          - text: Priya Sharma, RN ·
+                          - time: 5 days ago
+                      - listitem:
+                        - generic: Guidance sent
+                        - paragraph:
+                          - text: Priya Sharma, RN ·
+                          - time: Oct 30
+                        - paragraph: Thanks for letting me know. Nothing here worries me today, and I'll keep an eye on the trend.
+                      - listitem:
+                        - generic: Check-in reviewed
+                        - paragraph:
+                          - text: Priya Sharma, RN ·
+                          - time: Oct 27
+                      - listitem:
+                        - generic: Check-in reviewed
+                        - paragraph:
+                          - text: Priya Sharma, RN ·
+                          - time: Oct 24
+                      - listitem:
+                        - generic: Guidance sent
+                        - paragraph:
+                          - text: Priya Sharma, RN ·
+                          - time: Oct 23
+                        - paragraph: That's helpful, thank you. Please tell me if anything changes over the next few days.
+                      - listitem:
+                        - generic: Check-in reviewed
+                        - paragraph:
+                          - text: Priya Sharma, RN ·
+                          - time: Oct 21
+                      - listitem:
+                        - generic: Check-in reviewed
+                        - paragraph:
+                          - text: Priya Sharma, RN ·
+                          - time: Oct 18
+                      - listitem:
+                        - generic: Guidance sent
+                        - paragraph:
+                          - text: Priya Sharma, RN ·
+                          - time: Oct 17
+                        - paragraph: Thanks for the update. This looks steady compared with recent weeks. Keep doing what you're doing.
+                      - listitem:
+                        - generic: Check-in reviewed
+                        - paragraph:
+                          - text: Priya Sharma, RN ·
+                          - time: Oct 15
+                      - listitem:
+                        - generic: Check-in reviewed
+                        - paragraph:
+                          - text: Priya Sharma, RN ·
+                          - time: Oct 12
+                      - listitem:
+                        - generic: Guidance sent
+                        - paragraph:
+                          - text: Priya Sharma, RN ·
+                          - time: Oct 9
+                        - paragraph: That's helpful, thank you. Please tell me if anything changes over the next few days.
+                      - listitem:
+                        - generic: Check-in reviewed
+                        - paragraph:
+                          - text: Priya Sharma, RN ·
+                          - time: Oct 7
+                      - listitem:
+                        - generic: Check-in reviewed
+                        - paragraph:
+                          - text: Priya Sharma, RN ·
+                          - time: Oct 6
+                      - listitem:
+                        - generic: Guidance sent
+                        - paragraph:
+                          - text: Priya Sharma, RN ·
+                          - time: Oct 4
+                        - paragraph: Thanks for the update. This looks steady compared with recent weeks. Keep doing what you're doing.
+                    - button [aria-hidden]: Document call with Vox Advantage
+                  - region [aria-hidden]:
+                    - generic:
+                      - generic:
+                        - heading [level=2]: Messages from family
+                    - list:
+                      - listitem:
+                        - paragraph: Should Mom see someone about her hip after this morning?
+                        - paragraph:
+                          - text: David Okafor ·
+                          - time: 1 hour ago
+                    - generic:
+                      - generic: Reply to David
+                      - textbox:
+                        - /placeholder: Write a reply…
+                      - button [disabled]: Send reply
+    - region "Notifications alt+T"
+  - generic [aria-hidden]: "0"
+  - dialog [ref=f3e645]:
+    - generic [ref=f3e646]:
+      - heading "Schedule call" [level=2] [ref=f3e647]
+      - paragraph [ref=f3e648]: A call with David Okafor about Margaret Okafor.
+    - generic [ref=f3e649]:
+      - generic [ref=f3e650]:
+        - generic [ref=f3e651]:
+          - generic [ref=f3e652]: Date
+          - textbox "Date" [active] [ref=f3e653]: 2026-11-08
+        - generic [ref=f3e654]:
+          - generic [ref=f3e655]: Time
+          - textbox "Time" [ref=f3e656]: 10:00
+      - generic [ref=f3e657]:
+        - generic [ref=f3e658]: Note (optional)
+        - textbox "Note (optional)" [ref=f3e659]:
+          - /placeholder: What the call is about
+      - generic [ref=f3e660]:
+        - button "Cancel" [ref=f3e661]
+        - button "Schedule call" [ref=f3e662]
+    - button "Close" [ref=f3e663]

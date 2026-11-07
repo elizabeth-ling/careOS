@@ -1,0 +1,84 @@
+- generic [ref=e2]:
+  - generic [ref=e4]:
+    - complementary "Nurse navigation" [ref=e5]:
+      - link "CareOS triage queue" [ref=e6] [cursor=pointer]:
+        - /url: /nurse
+        - generic [ref=e7]: CareOS
+      - navigation "Main" [ref=e13]:
+        - link "Triage queue" [ref=e14] [cursor=pointer]:
+          - /url: /nurse
+        - link "Families" [ref=e18] [cursor=pointer]:
+          - /url: /nurse/families
+        - link "Messages" [ref=e25] [cursor=pointer]:
+          - /url: /nurse/messages
+        - link "Scheduled calls" [ref=e29] [cursor=pointer]:
+          - /url: /nurse/calls
+        - link "Care summaries" [ref=e33] [cursor=pointer]:
+          - /url: /nurse/summaries
+      - generic [ref=e38]:
+        - generic [ref=e39]:
+          - paragraph [ref=e40]: On shift
+          - paragraph [ref=e42]: 3 nurses · – families · until 7 PM
+        - link "Settings" [ref=e43] [cursor=pointer]:
+          - /url: /nurse/settings
+    - generic [ref=e51]:
+      - banner [ref=e52]:
+        - search [ref=e53]:
+          - generic [ref=e54]: Search patients, families, notes
+          - searchbox "Search patients, families, notes" [ref=e55]
+        - generic [ref=e56]:
+          - navigation "Switch view" [ref=e57]:
+            - link "Family view" [ref=e58] [cursor=pointer]:
+              - /url: /family
+            - link "Nurse view" [ref=e59] [cursor=pointer]:
+              - /url: /nurse
+          - button "Notifications" [ref=e60]
+      - main [ref=e65]:
+        - generic [ref=e66]:
+          - generic [ref=e67]:
+            - generic [ref=e68]:
+              - heading "Triage queue" [level=1] [ref=e69]
+              - paragraph [ref=e70]: Saturday, November 7 · Ranked by check-in content, red-flag rules and change from each patient's own baseline
+            - generic [ref=e71]:
+              - button "Export" [disabled]
+              - button "Start rounds" [disabled]
+          - region "Triage queue" [ref=e77]:
+            - generic [ref=e78]:
+              - group "Filter the queue" [ref=e79]:
+                - button "All" [pressed] [ref=e80]
+                - button "Urgent" [ref=e81]
+                - button "Watch" [ref=e82]
+                - button "Stable" [ref=e83]
+                - button "Reviewed today" [ref=e84]
+              - generic [ref=e85]:
+                - generic [ref=e86]: Sort by
+                - combobox "Sort by" [ref=e87]:
+                  - option "Risk score" [selected]
+                  - option "Most recent"
+                  - option "Longest unreviewed"
+            - table [ref=e89]:
+              - rowgroup [ref=e90]:
+                - row [ref=e91]:
+                  - columnheader [ref=e92]:
+                    - generic [ref=e93]:
+                      - text: Risk
+                      - button "How the ranking works" [ref=e94]
+                  - columnheader "Patient" [ref=e98]
+                  - columnheader "Caregiver" [ref=e99]
+                  - columnheader "Why flagged" [ref=e100]
+                  - columnheader "14-day trend" [ref=e101]
+                  - columnheader "Last check-in" [ref=e102]
+                  - columnheader "Action" [ref=e103]
+              - rowgroup [ref=e105]:
+                - row [ref=e106]:
+                  - cell [ref=e107]
+                - row [ref=e109]:
+                  - cell [ref=e110]
+                - row [ref=e112]:
+                  - cell [ref=e113]
+                - row [ref=e115]:
+                  - cell [ref=e116]
+                - row [ref=e118]:
+                  - cell [ref=e119]
+            - paragraph [ref=e121]: AI ranking supports triage only. Clinical decisions remain with the nurse.
+  - region "Notifications alt+T"

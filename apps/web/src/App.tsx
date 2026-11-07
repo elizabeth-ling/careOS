@@ -13,11 +13,11 @@ import {
   FamilyHomePage,
   MessagesPage,
   NotFoundPage,
-  PatientDetailPage,
   ScheduledCallsPage,
   SettingsPage,
-  TriageQueuePage,
 } from "@/pages/placeholders";
+import { PatientDetailPage } from "@/pages/nurse/PatientDetailPage";
+import { TriageQueuePage } from "@/pages/nurse/TriageQueuePage";
 
 const router = createBrowserRouter([
   { path: "/", element: <EntryPage /> },

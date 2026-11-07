@@ -1,0 +1,499 @@
+- generic:
+  - generic:
+    - generic:
+      - generic:
+        - complementary [aria-hidden]:
+          - link:
+            - /url: /nurse
+            - generic: CareOS
+          - navigation:
+            - link:
+              - /url: /nurse
+              - generic: Triage queue
+              - generic:
+                - text: "6"
+                - generic: unreviewed
+            - link:
+              - /url: /nurse/families
+              - generic: Families
+            - link:
+              - /url: /nurse/messages
+              - generic: Messages
+              - generic:
+                - text: "1"
+                - generic: unread
+            - link:
+              - /url: /nurse/calls
+              - generic: Scheduled calls
+            - link:
+              - /url: /nurse/summaries
+              - generic: Care summaries
+          - generic:
+            - generic:
+              - paragraph: On shift
+              - paragraph: 3 nurses · 8 families · until 7 PM
+            - link:
+              - /url: /nurse/settings
+              - generic: Settings
+            - button:
+              - generic: PS
+              - generic:
+                - generic: Priya Sharma, RN
+                - generic: Maple Grove Care Home
+              - generic: Account
+        - generic:
+          - banner [aria-hidden]:
+            - search:
+              - generic: Search patients, families, notes
+              - searchbox
+            - generic:
+              - navigation:
+                - link:
+                  - /url: /family
+                  - text: Family view
+                - link:
+                  - /url: /nurse
+                  - text: Nurse view
+              - button:
+                - generic: Notifications, 2 urgent waiting
+          - main:
+            - generic:
+              - generic [aria-hidden]:
+                - generic:
+                  - heading [level=1]: Triage queue
+                  - paragraph: Saturday, November 7 · Ranked by check-in content, red-flag rules and change from each patient's own baseline
+                - generic:
+                  - button: Export
+                  - button: Start rounds
+              - region [aria-hidden]:
+                - generic:
+                  - paragraph: Needs attention
+                  - paragraph: "2"
+                  - paragraph: Walter M. and Margaret O. waiting
+                - generic:
+                  - paragraph: Watch
+                  - paragraph: "3"
+                  - paragraph: Drifting from their baseline
+                - generic:
+                  - paragraph: Stable
+                  - paragraph: "3"
+                  - paragraph: No new concerns this week
+                - generic:
+                  - paragraph: Avg response time
+                  - paragraph: 3.0h
+                  - paragraph: "Target: under 4 hours"
+              - region [aria-hidden]:
+                - generic:
+                  - group:
+                    - button [pressed]:
+                      - text: All
+                      - generic: "8"
+                    - button:
+                      - text: Urgent
+                      - generic: "2"
+                    - button:
+                      - text: Watch
+                      - generic: "3"
+                    - button:
+                      - text: Stable
+                      - generic: "3"
+                    - button:
+                      - text: Reviewed today
+                      - generic: "5"
+                  - generic:
+                    - generic: Sort by
+                    - combobox
+                - generic:
+                  - table:
+                    - rowgroup:
+                      - row:
+                        - columnheader:
+                          - generic:
+                            - text: Risk
+                            - button:
+                              - generic: How the ranking works
+                        - columnheader: Patient
+                        - columnheader: Caregiver
+                        - columnheader: Why flagged
+                        - columnheader: 14-day trend
+                        - columnheader: Last check-in
+                        - columnheader:
+                          - generic: Action
+                    - rowgroup:
+                      - row:
+                        - cell:
+                          - generic:
+                            - generic:
+                              - generic: Rank
+                              - text: "1"
+                            - generic:
+                              - generic: Risk score
+                              - text: "83"
+                        - cell:
+                          - generic:
+                            - generic: WM
+                            - generic:
+                              - paragraph: Walter Morrison
+                              - paragraph: 82 · Early dementia, Hypertension
+                        - cell:
+                          - paragraph: Sarah Morrison
+                          - paragraph: Daughter
+                        - cell:
+                          - list:
+                            - listitem:
+                              - generic: New confusion
+                            - listitem:
+                              - generic: Appetite ↓ 3 wks
+                        - cell:
+                          - img:
+                            - generic:
+                              - application
+                        - cell:
+                          - paragraph:
+                            - time: Just now
+                          - generic: New
+                        - cell:
+                          - link:
+                            - /url: /nurse/patients/54194928-7f35-4300-ba45-9d80d5f4d17a
+                            - text: Review
+                            - generic: Walter Morrison
+                      - row:
+                        - cell:
+                          - generic:
+                            - generic:
+                              - generic: Rank
+                              - text: "2"
+                            - generic:
+                              - generic: Risk score
+                              - text: "74"
+                        - cell:
+                          - generic:
+                            - generic: MO
+                            - generic:
+                              - paragraph: Margaret Okafor
+                              - paragraph: 88 · Osteoporosis, CHF
+                        - cell:
+                          - paragraph: David Okafor
+                          - paragraph: Son
+                        - cell:
+                          - list:
+                            - listitem:
+                              - generic: Fall reported
+                            - listitem:
+                              - generic: Mobility ↓
+                        - cell:
+                          - img:
+                            - generic:
+                              - application
+                        - cell:
+                          - paragraph:
+                            - time: 2 hours ago
+                          - generic: New
+                        - cell:
+                          - link:
+                            - /url: /nurse/patients/5c7e0c51-3c4b-49cb-bd93-5613bb118358
+                            - text: Review
+                            - generic: Margaret Okafor
+                      - row:
+                        - cell:
+                          - generic:
+                            - generic:
+                              - generic: Rank
+                              - text: "3"
+                            - generic:
+                              - generic: Risk score
+                              - text: "58"
+                        - cell:
+                          - generic:
+                            - generic: HT
+                            - generic:
+                              - paragraph: Henri Tremblay
+                              - paragraph: 79 · Parkinson's disease
+                        - cell:
+                          - paragraph: Louise Tremblay
+                          - paragraph: Spouse
+                        - cell:
+                          - list:
+                            - listitem:
+                              - generic: Sleep ↓ 10 days
+                            - listitem:
+                              - generic: Caregiver strain
+                        - cell:
+                          - img:
+                            - generic:
+                              - application
+                        - cell:
+                          - paragraph:
+                            - time: 5 hours ago
+                          - generic: Reviewed
+                        - cell:
+                          - link:
+                            - /url: /nurse/patients/25d35a27-9cc8-4465-a8b7-5ba978cc16ee
+                            - text: Open
+                            - generic: Henri Tremblay
+                      - row:
+                        - cell:
+                          - generic:
+                            - generic:
+                              - generic: Rank
+                              - text: "4"
+                            - generic:
+                              - generic: Risk score
+                              - text: "48"
+                        - cell:
+                          - generic:
+                            - generic: GL
+                            - generic:
+                              - paragraph: Grace Li
+                              - paragraph: 84 · Type 2 diabetes
+                        - cell:
+                          - paragraph: Kevin Li
+                          - paragraph: Son
+                        - cell:
+                          - list:
+                            - listitem:
+                              - generic: Missed meds ×2
+                        - cell:
+                          - img:
+                            - generic:
+                              - application
+                        - cell:
+                          - paragraph:
+                            - time: Yesterday
+                          - generic: Guidance sent
+                        - cell:
+                          - link:
+                            - /url: /nurse/patients/ecf93fb6-4b74-4c26-89a5-4627a5f4b1ac
+                            - text: Open
+                            - generic: Grace Li
+                      - row:
+                        - cell:
+                          - generic:
+                            - generic:
+                              - generic: Rank
+                              - text: "5"
+                            - generic:
+                              - generic: Risk score
+                              - text: "42"
+                        - cell:
+                          - generic:
+                            - generic: AM
+                            - generic:
+                              - paragraph: Anand Mehta
+                              - paragraph: 77 · COPD
+                        - cell:
+                          - paragraph: Ritu Mehta
+                          - paragraph: Daughter
+                        - cell:
+                          - list:
+                            - listitem:
+                              - generic: Breathless on stairs
+                        - cell:
+                          - img:
+                            - generic:
+                              - application
+                        - cell:
+                          - paragraph:
+                            - time: Yesterday
+                          - generic: New
+                        - cell:
+                          - link:
+                            - /url: /nurse/patients/5264e6bd-afff-4085-bcca-66182090e57f
+                            - text: Review
+                            - generic: Anand Mehta
+                      - row:
+                        - cell:
+                          - generic:
+                            - generic:
+                              - generic: Rank
+                              - text: "6"
+                            - generic:
+                              - generic: Risk score
+                              - text: "28"
+                        - cell:
+                          - generic:
+                            - generic: DC
+                            - generic:
+                              - paragraph: Dorothy Campbell
+                              - paragraph: 91 · Mild cognitive impairment
+                        - cell:
+                          - paragraph: Ellen Campbell
+                          - paragraph: Daughter-in-law
+                        - cell:
+                          - generic: No changes
+                        - cell:
+                          - img:
+                            - generic:
+                              - application
+                        - cell:
+                          - paragraph:
+                            - time: Yesterday
+                          - generic: Reviewed
+                        - cell:
+                          - link:
+                            - /url: /nurse/patients/84757178-2b48-4f84-b8db-fc5c8e1e76f4
+                            - text: Open
+                            - generic: Dorothy Campbell
+                      - row:
+                        - cell:
+                          - generic:
+                            - generic:
+                              - generic: Rank
+                              - text: "7"
+                            - generic:
+                              - generic: Risk score
+                              - text: "20"
+                        - cell:
+                          - generic:
+                            - generic: FR
+                            - generic:
+                              - paragraph: Frank Russo
+                              - paragraph: 80 · Osteoarthritis
+                        - cell:
+                          - paragraph: Maria Russo
+                          - paragraph: Spouse
+                        - cell:
+                          - generic: No changes
+                        - cell:
+                          - img:
+                            - generic:
+                              - application
+                        - cell:
+                          - paragraph:
+                            - time: 2 days ago
+                          - generic: Reviewed
+                        - cell:
+                          - link:
+                            - /url: /nurse/patients/0f2dfad2-3e79-48bf-b340-83fa5057854d
+                            - text: Open
+                            - generic: Frank Russo
+                      - row:
+                        - cell:
+                          - generic:
+                            - generic:
+                              - generic: Rank
+                              - text: "8"
+                            - generic:
+                              - generic: Risk score
+                              - text: "12"
+                        - cell:
+                          - generic:
+                            - generic: RF
+                            - generic:
+                              - paragraph: Rose Fontaine
+                              - paragraph: 86 · Hypertension
+                        - cell:
+                          - paragraph: Julie Fontaine
+                          - paragraph: Granddaughter
+                        - cell:
+                          - generic: No changes
+                        - cell:
+                          - img:
+                            - generic:
+                              - application
+                        - cell:
+                          - paragraph:
+                            - time: 3 days ago
+                          - generic: Guidance sent
+                        - cell:
+                          - link:
+                            - /url: /nurse/patients/1f612004-1ea5-4e33-9860-5055ac20a3e7
+                            - text: Open
+                            - generic: Rose Fontaine
+                - paragraph: AI ranking supports triage only. Clinical decisions remain with the nurse.
+              - generic:
+                - region "Changes from baseline":
+                  - generic [aria-hidden]:
+                    - generic:
+                      - heading [level=2]: Changes from baseline
+                      - paragraph: Walter Morrison · last 21 days · severity 0–3
+                    - list:
+                      - listitem: Appetite
+                      - listitem: Cognition
+                      - listitem: Baseline
+                  - generic:
+                    - img "Severity 0 to 3 over the last 21 days. Appetite latest 2 of 3, Cognition latest 3 of 3.":
+                      - generic:
+                        - generic:
+                          - generic:
+                            - application [aria-hidden]:
+                              - generic:
+                                - generic:
+                                  - generic: Oct 18
+                                  - generic: Oct 23
+                                  - generic: Oct 29
+                                  - generic: Nov 7
+                                - generic:
+                                  - generic: "0"
+                                  - generic: "1"
+                                  - generic: "2"
+                                  - generic: "3"
+                  - generic [aria-hidden]:
+                    - list:
+                      - listitem:
+                        - generic: "Falling:"
+                        - generic:
+                          - strong: Appetite
+                          - text: below baseline in 7 of the last 7 check-ins
+                      - listitem:
+                        - generic: "New:"
+                        - generic:
+                          - strong: Cognition
+                          - text: ": first time misidentifying a family member (today)"
+                - region [aria-hidden]:
+                  - generic:
+                    - generic:
+                      - heading [level=2]: Latest check-in
+                      - paragraph: Walter Morrison · from Sarah (daughter) · Today, 4:22 PM · 0:48
+                    - generic:
+                      - text: Urgent
+                      - generic: · 83
+                  - region:
+                    - paragraph: AI summary · verify against transcript
+                    - generic: "Eating much less than usual. Significant change in memory or awareness. Seems a little off or low. Taking medications as prescribed. Caregiver reports feeling tired. Flagged: New confusion, Appetite ↓ 3 wks."
+                  - heading [level=3]: Transcript
+                  - blockquote:
+                    - text: “
+                    - mark:
+                      - text: Dad barely touched his dinner again tonight
+                      - generic: (Appetite)
+                    - text: ", maybe a few bites."
+                    - mark:
+                      - text: And this morning he called me by my mom's name
+                      - generic: (Cognition)
+                    - text: ", which he's never done before."
+                    - mark:
+                      - text: He seemed a bit off all day honestly.
+                      - generic: (Mood)
+                    - text: He did take all his pills though.
+                    - mark:
+                      - text: I'm pretty tired.
+                      - generic: (Caregiver strain)
+                    - text: ”
+                  - generic:
+                    - button: Send guidance
+                    - button: Schedule call
+                    - button: Mark reviewed
+    - region "Notifications alt+T"
+  - generic [aria-hidden]: "0"
+  - dialog [ref=f2e560]:
+    - generic [ref=f2e561]:
+      - generic [ref=f2e562]:
+        - heading "Send guidance" [level=2] [ref=f2e563]
+        - paragraph [ref=f2e564]: To Sarah Morrison (daughter) about Walter Morrison's check-in from Today, 4:22 PM.
+      - generic [ref=f2e565]:
+        - region "AI summary" [ref=f2e566]:
+          - paragraph [ref=f2e567]: AI summary · verify against transcript
+          - generic [ref=f2e571]:
+            - paragraph [ref=f2e572]: Suggested drafts. Pick one to start from, then edit it.
+            - group "Suggested drafts. Pick one to start from, then edit it." [ref=f2e573]:
+              - button "Suggested next steps" [ref=f2e574]
+              - button "Reassurance and plan" [ref=f2e575]
+              - button "When to escalate" [ref=f2e576]
+        - generic [ref=f2e577]:
+          - generic [ref=f2e578]: Message to Sarah
+          - textbox "Message to Sarah" [active] [ref=f2e579]:
+            - /placeholder: Write guidance for Sarah…
+      - generic [ref=f2e580]:
+        - button "Send to Sarah" [disabled]
+    - button "Close" [ref=f2e581]

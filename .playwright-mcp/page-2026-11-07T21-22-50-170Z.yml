@@ -1,0 +1,454 @@
+- generic [active] [ref=f2e1]:
+  - generic [ref=f2e2]:
+    - generic [ref=f2e4]:
+      - complementary "Nurse navigation" [ref=f2e5]:
+        - link "CareOS triage queue" [ref=f2e6] [cursor=pointer]:
+          - /url: /nurse
+          - generic [ref=f2e7]: CareOS
+        - navigation "Main" [ref=f2e13]:
+          - link "Triage queue 6 unreviewed" [ref=f2e125] [cursor=pointer]:
+            - /url: /nurse
+            - generic [ref=f2e17]: Triage queue
+            - generic [ref=f2e126]:
+              - text: "6"
+              - generic [ref=f2e127]: unreviewed
+          - link "Families" [ref=f2e18] [cursor=pointer]:
+            - /url: /nurse/families
+          - link "Messages 1 unread" [ref=f2e128] [cursor=pointer]:
+            - /url: /nurse/messages
+            - generic [ref=f2e28]: Messages
+            - generic [ref=f2e129]:
+              - text: "1"
+              - generic [ref=f2e130]: unread
+          - link "Scheduled calls" [ref=f2e29] [cursor=pointer]:
+            - /url: /nurse/calls
+          - link "Care summaries" [ref=f2e33] [cursor=pointer]:
+            - /url: /nurse/summaries
+        - generic [ref=f2e38]:
+          - generic [ref=f2e39]:
+            - paragraph [ref=f2e40]: On shift
+            - paragraph [ref=f2e42]: 3 nurses · 8 families · until 7 PM
+          - link "Settings" [ref=f2e43] [cursor=pointer]:
+            - /url: /nurse/settings
+          - button "PS Priya Sharma, RN Maple Grove Care Home Account" [ref=f2e131]:
+            - generic [ref=f2e132]: PS
+            - generic [ref=f2e134]:
+              - generic [ref=f2e135]: Priya Sharma, RN
+              - generic [ref=f2e136]: Maple Grove Care Home
+            - generic [ref=f2e140]: Account
+      - generic [ref=f2e51]:
+        - banner [ref=f2e52]:
+          - search [ref=f2e53]:
+            - generic [ref=f2e54]: Search patients, families, notes
+            - searchbox "Search patients, families, notes" [ref=f2e55]
+          - generic [ref=f2e56]:
+            - navigation "Switch view" [ref=f2e57]:
+              - link "Family view" [ref=f2e58] [cursor=pointer]:
+                - /url: /family
+              - link "Nurse view" [ref=f2e59] [cursor=pointer]:
+                - /url: /nurse
+            - button "Notifications, 2 urgent waiting" [ref=f2e141]
+        - main [ref=f2e65]:
+          - generic [ref=f2e66]:
+            - generic [ref=f2e67]:
+              - generic [ref=f2e68]:
+                - heading "Triage queue" [level=1] [ref=f2e69]
+                - paragraph [ref=f2e70]: Saturday, November 7 · Ranked by check-in content, red-flag rules and change from each patient's own baseline
+              - generic [ref=f2e71]:
+                - button "Export" [ref=f2e143]
+                - button "Start rounds" [ref=f2e144]
+            - region "Queue summary" [ref=f2e145]:
+              - generic [ref=f2e146]:
+                - paragraph [ref=f2e147]: Needs attention
+                - paragraph [ref=f2e149]: "2"
+                - paragraph [ref=f2e150]: Walter M. and Margaret O. waiting
+              - generic [ref=f2e151]:
+                - paragraph [ref=f2e152]: Watch
+                - paragraph [ref=f2e154]: "3"
+                - paragraph [ref=f2e155]: Drifting from their baseline
+              - generic [ref=f2e156]:
+                - paragraph [ref=f2e157]: Stable
+                - paragraph [ref=f2e159]: "3"
+                - paragraph [ref=f2e160]: No new concerns this week
+              - generic [ref=f2e161]:
+                - paragraph [ref=f2e162]: Avg response time
+                - paragraph [ref=f2e164]: 3.0h
+                - paragraph [ref=f2e165]: "Target: under 4 hours"
+            - region "Triage queue" [ref=f2e77]:
+              - generic [ref=f2e78]:
+                - group "Filter the queue" [ref=f2e79]:
+                  - button "All 8" [pressed] [ref=f2e166]:
+                    - text: All
+                    - generic [ref=f2e167]: "8"
+                  - button "Urgent 2" [ref=f2e168]:
+                    - text: Urgent
+                    - generic [ref=f2e169]: "2"
+                  - button "Watch 3" [ref=f2e170]:
+                    - text: Watch
+                    - generic [ref=f2e171]: "3"
+                  - button "Stable 3" [ref=f2e172]:
+                    - text: Stable
+                    - generic [ref=f2e173]: "3"
+                  - button "Reviewed today 5" [ref=f2e174]:
+                    - text: Reviewed today
+                    - generic [ref=f2e175]: "5"
+                - generic [ref=f2e85]:
+                  - generic [ref=f2e86]: Sort by
+                  - combobox "Sort by" [ref=f2e87]:
+                    - option "Risk score" [selected]
+                    - option "Most recent"
+                    - option "Longest unreviewed"
+              - table [ref=f2e89]:
+                - rowgroup [ref=f2e90]:
+                  - row [ref=f2e91]:
+                    - columnheader [ref=f2e92]:
+                      - generic [ref=f2e93]:
+                        - text: Risk
+                        - button "How the ranking works" [ref=f2e94]
+                    - columnheader "Patient" [ref=f2e98]
+                    - columnheader "Caregiver" [ref=f2e99]
+                    - columnheader "Why flagged" [ref=f2e100]
+                    - columnheader "14-day trend" [ref=f2e101]
+                    - columnheader "Last check-in" [ref=f2e102]
+                    - columnheader "Action" [ref=f2e103]
+                - rowgroup [ref=f2e105]:
+                  - row [ref=f2e176] [cursor=pointer]:
+                    - cell "Rank 1 Risk score 83" [ref=f2e177]:
+                      - generic [ref=f2e178]:
+                        - generic [ref=f2e179]:
+                          - generic [ref=f2e180]: Rank
+                          - text: "1"
+                        - generic [ref=f2e181]:
+                          - generic [ref=f2e182]: Risk score
+                          - text: "83"
+                    - cell "WM Walter Morrison 82 · Early dementia, Hypertension" [ref=f2e183]:
+                      - generic [ref=f2e184]:
+                        - generic [ref=f2e185]: WM
+                        - generic [ref=f2e187]:
+                          - paragraph [ref=f2e188]: Walter Morrison
+                          - paragraph [ref=f2e189]: 82 · Early dementia, Hypertension
+                    - cell [ref=f2e190]:
+                      - paragraph [ref=f2e191]: Sarah Morrison
+                      - paragraph [ref=f2e192]: Daughter
+                    - cell [ref=f2e193]:
+                      - list "Why flagged" [ref=f2e194]:
+                        - listitem [ref=f2e195]:
+                          - generic [ref=f2e196]: New confusion
+                        - listitem [ref=f2e197]:
+                          - generic [ref=f2e198]: Appetite ↓ 3 wks
+                    - cell [ref=f2e199]:
+                      - 'img "14-day risk trend: from 30 to 83 over 8 days" [ref=f2e200]':
+                        - application [ref=f2e202]
+                    - cell "Just now New" [ref=f2e207]:
+                      - paragraph [ref=f2e208]:
+                        - time [ref=f2e209]: Just now
+                      - generic [ref=f2e210]: New
+                    - cell [ref=f2e211]:
+                      - link "Review Walter Morrison" [ref=f2e212]:
+                        - /url: /nurse/patients/54194928-7f35-4300-ba45-9d80d5f4d17a
+                        - text: Review
+                        - generic [ref=f2e213]: Walter Morrison
+                  - row [ref=f2e214] [cursor=pointer]:
+                    - cell "Rank 2 Risk score 74" [ref=f2e215]:
+                      - generic [ref=f2e216]:
+                        - generic [ref=f2e217]:
+                          - generic [ref=f2e218]: Rank
+                          - text: "2"
+                        - generic [ref=f2e219]:
+                          - generic [ref=f2e220]: Risk score
+                          - text: "74"
+                    - cell "MO Margaret Okafor 88 · Osteoporosis, CHF" [ref=f2e221]:
+                      - generic [ref=f2e222]:
+                        - generic [ref=f2e223]: MO
+                        - generic [ref=f2e225]:
+                          - paragraph [ref=f2e226]: Margaret Okafor
+                          - paragraph [ref=f2e227]: 88 · Osteoporosis, CHF
+                    - cell [ref=f2e228]:
+                      - paragraph [ref=f2e229]: David Okafor
+                      - paragraph [ref=f2e230]: Son
+                    - cell [ref=f2e231]:
+                      - list "Why flagged" [ref=f2e232]:
+                        - listitem [ref=f2e233]:
+                          - generic [ref=f2e234]: Fall reported
+                        - listitem [ref=f2e235]:
+                          - generic [ref=f2e236]: Mobility ↓
+                    - cell [ref=f2e237]:
+                      - 'img "14-day risk trend: from 12 to 74 over 6 days" [ref=f2e238]':
+                        - application [ref=f2e240]
+                    - cell "2 hours ago New" [ref=f2e245]:
+                      - paragraph [ref=f2e246]:
+                        - time [ref=f2e247]: 2 hours ago
+                      - generic [ref=f2e248]: New
+                    - cell [ref=f2e249]:
+                      - link "Review Margaret Okafor" [ref=f2e250]:
+                        - /url: /nurse/patients/5c7e0c51-3c4b-49cb-bd93-5613bb118358
+                        - text: Review
+                        - generic [ref=f2e251]: Margaret Okafor
+                  - row [ref=f2e252] [cursor=pointer]:
+                    - cell "Rank 3 Risk score 58" [ref=f2e253]:
+                      - generic [ref=f2e254]:
+                        - generic [ref=f2e255]:
+                          - generic [ref=f2e256]: Rank
+                          - text: "3"
+                        - generic [ref=f2e257]:
+                          - generic [ref=f2e258]: Risk score
+                          - text: "58"
+                    - cell "HT Henri Tremblay 79 · Parkinson's disease" [ref=f2e259]:
+                      - generic [ref=f2e260]:
+                        - generic [ref=f2e261]: HT
+                        - generic [ref=f2e263]:
+                          - paragraph [ref=f2e264]: Henri Tremblay
+                          - paragraph [ref=f2e265]: 79 · Parkinson's disease
+                    - cell [ref=f2e266]:
+                      - paragraph [ref=f2e267]: Louise Tremblay
+                      - paragraph [ref=f2e268]: Spouse
+                    - cell [ref=f2e269]:
+                      - list "Why flagged" [ref=f2e270]:
+                        - listitem [ref=f2e271]:
+                          - generic [ref=f2e272]: Sleep ↓ 10 days
+                        - listitem [ref=f2e273]:
+                          - generic [ref=f2e274]: Caregiver strain
+                    - cell [ref=f2e275]:
+                      - 'img "14-day risk trend: from 10 to 58 over 9 days" [ref=f2e276]':
+                        - application [ref=f2e278]
+                    - cell "5 hours ago Reviewed" [ref=f2e283]:
+                      - paragraph [ref=f2e284]:
+                        - time [ref=f2e285]: 5 hours ago
+                      - generic [ref=f2e286]: Reviewed
+                    - cell [ref=f2e287]:
+                      - link "Open Henri Tremblay" [ref=f2e288]:
+                        - /url: /nurse/patients/25d35a27-9cc8-4465-a8b7-5ba978cc16ee
+                        - text: Open
+                        - generic [ref=f2e289]: Henri Tremblay
+                  - row [ref=f2e290] [cursor=pointer]:
+                    - cell "Rank 4 Risk score 48" [ref=f2e291]:
+                      - generic [ref=f2e292]:
+                        - generic [ref=f2e293]:
+                          - generic [ref=f2e294]: Rank
+                          - text: "4"
+                        - generic [ref=f2e295]:
+                          - generic [ref=f2e296]: Risk score
+                          - text: "48"
+                    - cell "GL Grace Li 84 · Type 2 diabetes" [ref=f2e297]:
+                      - generic [ref=f2e298]:
+                        - generic [ref=f2e299]: GL
+                        - generic [ref=f2e301]:
+                          - paragraph [ref=f2e302]: Grace Li
+                          - paragraph [ref=f2e303]: 84 · Type 2 diabetes
+                    - cell [ref=f2e304]:
+                      - paragraph [ref=f2e305]: Kevin Li
+                      - paragraph [ref=f2e306]: Son
+                    - cell [ref=f2e307]:
+                      - list "Why flagged" [ref=f2e308]:
+                        - listitem [ref=f2e309]:
+                          - generic [ref=f2e310]: Missed meds ×2
+                    - cell [ref=f2e311]:
+                      - 'img "14-day risk trend: from 12 to 48 over 8 days" [ref=f2e312]':
+                        - application [ref=f2e314]
+                    - cell "Yesterday Guidance sent" [ref=f2e319]:
+                      - paragraph [ref=f2e320]:
+                        - time [ref=f2e321]: Yesterday
+                      - generic [ref=f2e322]: Guidance sent
+                    - cell [ref=f2e323]:
+                      - link "Open Grace Li" [ref=f2e324]:
+                        - /url: /nurse/patients/ecf93fb6-4b74-4c26-89a5-4627a5f4b1ac
+                        - text: Open
+                        - generic [ref=f2e325]: Grace Li
+                  - row [ref=f2e326] [cursor=pointer]:
+                    - cell "Rank 5 Risk score 42" [ref=f2e327]:
+                      - generic [ref=f2e328]:
+                        - generic [ref=f2e329]:
+                          - generic [ref=f2e330]: Rank
+                          - text: "5"
+                        - generic [ref=f2e331]:
+                          - generic [ref=f2e332]: Risk score
+                          - text: "42"
+                    - cell "AM Anand Mehta 77 · COPD" [ref=f2e333]:
+                      - generic [ref=f2e334]:
+                        - generic [ref=f2e335]: AM
+                        - generic [ref=f2e337]:
+                          - paragraph [ref=f2e338]: Anand Mehta
+                          - paragraph [ref=f2e339]: 77 · COPD
+                    - cell [ref=f2e340]:
+                      - paragraph [ref=f2e341]: Ritu Mehta
+                      - paragraph [ref=f2e342]: Daughter
+                    - cell [ref=f2e343]:
+                      - list "Why flagged" [ref=f2e344]:
+                        - listitem [ref=f2e345]:
+                          - generic [ref=f2e346]: Breathless on stairs
+                    - cell [ref=f2e347]:
+                      - 'img "14-day risk trend: from 12 to 42 over 6 days" [ref=f2e348]':
+                        - application [ref=f2e350]
+                    - cell "Yesterday New" [ref=f2e355]:
+                      - paragraph [ref=f2e356]:
+                        - time [ref=f2e357]: Yesterday
+                      - generic [ref=f2e358]: New
+                    - cell [ref=f2e359]:
+                      - link "Review Anand Mehta" [ref=f2e360]:
+                        - /url: /nurse/patients/5264e6bd-afff-4085-bcca-66182090e57f
+                        - text: Review
+                        - generic [ref=f2e361]: Anand Mehta
+                  - row [ref=f2e362] [cursor=pointer]:
+                    - cell "Rank 6 Risk score 28" [ref=f2e363]:
+                      - generic [ref=f2e364]:
+                        - generic [ref=f2e365]:
+                          - generic [ref=f2e366]: Rank
+                          - text: "6"
+                        - generic [ref=f2e367]:
+                          - generic [ref=f2e368]: Risk score
+                          - text: "28"
+                    - cell "DC Dorothy Campbell 91 · Mild cognitive impairment" [ref=f2e369]:
+                      - generic [ref=f2e370]:
+                        - generic [ref=f2e371]: DC
+                        - generic [ref=f2e373]:
+                          - paragraph [ref=f2e374]: Dorothy Campbell
+                          - paragraph [ref=f2e375]: 91 · Mild cognitive impairment
+                    - cell [ref=f2e376]:
+                      - paragraph [ref=f2e377]: Ellen Campbell
+                      - paragraph [ref=f2e378]: Daughter-in-law
+                    - cell "No changes" [ref=f2e379]
+                    - cell [ref=f2e381]:
+                      - 'img "14-day risk trend: from 18 to 28 over 7 days" [ref=f2e382]':
+                        - application [ref=f2e384]
+                    - cell "Yesterday Reviewed" [ref=f2e389]:
+                      - paragraph [ref=f2e390]:
+                        - time [ref=f2e391]: Yesterday
+                      - generic [ref=f2e392]: Reviewed
+                    - cell [ref=f2e393]:
+                      - link "Open Dorothy Campbell" [ref=f2e394]:
+                        - /url: /nurse/patients/84757178-2b48-4f84-b8db-fc5c8e1e76f4
+                        - text: Open
+                        - generic [ref=f2e395]: Dorothy Campbell
+                  - row [ref=f2e396] [cursor=pointer]:
+                    - cell "Rank 7 Risk score 20" [ref=f2e397]:
+                      - generic [ref=f2e398]:
+                        - generic [ref=f2e399]:
+                          - generic [ref=f2e400]: Rank
+                          - text: "7"
+                        - generic [ref=f2e401]:
+                          - generic [ref=f2e402]: Risk score
+                          - text: "20"
+                    - cell "FR Frank Russo 80 · Osteoarthritis" [ref=f2e403]:
+                      - generic [ref=f2e404]:
+                        - generic [ref=f2e405]: FR
+                        - generic [ref=f2e407]:
+                          - paragraph [ref=f2e408]: Frank Russo
+                          - paragraph [ref=f2e409]: 80 · Osteoarthritis
+                    - cell [ref=f2e410]:
+                      - paragraph [ref=f2e411]: Maria Russo
+                      - paragraph [ref=f2e412]: Spouse
+                    - cell "No changes" [ref=f2e413]
+                    - cell [ref=f2e415]:
+                      - 'img "14-day risk trend: from 10 to 20 over 7 days" [ref=f2e416]':
+                        - application [ref=f2e418]
+                    - cell "2 days ago Reviewed" [ref=f2e423]:
+                      - paragraph [ref=f2e424]:
+                        - time [ref=f2e425]: 2 days ago
+                      - generic [ref=f2e426]: Reviewed
+                    - cell [ref=f2e427]:
+                      - link "Open Frank Russo" [ref=f2e428]:
+                        - /url: /nurse/patients/0f2dfad2-3e79-48bf-b340-83fa5057854d
+                        - text: Open
+                        - generic [ref=f2e429]: Frank Russo
+                  - row [ref=f2e430] [cursor=pointer]:
+                    - cell "Rank 8 Risk score 12" [ref=f2e431]:
+                      - generic [ref=f2e432]:
+                        - generic [ref=f2e433]:
+                          - generic [ref=f2e434]: Rank
+                          - text: "8"
+                        - generic [ref=f2e435]:
+                          - generic [ref=f2e436]: Risk score
+                          - text: "12"
+                    - cell "RF Rose Fontaine 86 · Hypertension" [ref=f2e437]:
+                      - generic [ref=f2e438]:
+                        - generic [ref=f2e439]: RF
+                        - generic [ref=f2e441]:
+                          - paragraph [ref=f2e442]: Rose Fontaine
+                          - paragraph [ref=f2e443]: 86 · Hypertension
+                    - cell [ref=f2e444]:
+                      - paragraph [ref=f2e445]: Julie Fontaine
+                      - paragraph [ref=f2e446]: Granddaughter
+                    - cell "No changes" [ref=f2e447]
+                    - cell [ref=f2e449]:
+                      - 'img "14-day risk trend: from 12 to 12 over 6 days" [ref=f2e450]':
+                        - application [ref=f2e452]
+                    - cell "3 days ago Guidance sent" [ref=f2e453]:
+                      - paragraph [ref=f2e454]:
+                        - time [ref=f2e455]: 3 days ago
+                      - generic [ref=f2e456]: Guidance sent
+                    - cell [ref=f2e457]:
+                      - link "Open Rose Fontaine" [ref=f2e458]:
+                        - /url: /nurse/patients/1f612004-1ea5-4e33-9860-5055ac20a3e7
+                        - text: Open
+                        - generic [ref=f2e459]: Rose Fontaine
+              - paragraph [ref=f2e121]: AI ranking supports triage only. Clinical decisions remain with the nurse.
+            - generic [ref=f2e122]:
+              - region [ref=f2e460]:
+                - generic [ref=f2e461]:
+                  - generic [ref=f2e462]:
+                    - heading "Changes from baseline" [level=2] [ref=f2e463]
+                    - paragraph [ref=f2e464]: Walter Morrison · last 21 days · severity 0–3
+                  - list [ref=f2e465]:
+                    - listitem [ref=f2e466]: Appetite
+                    - listitem [ref=f2e468]: Cognition
+                    - listitem [ref=f2e470]: Baseline
+                - img "Severity 0 to 3 over the last 21 days. Appetite latest 2 of 3, Cognition latest 3 of 3." [ref=f2e473]:
+                  - application [ref=f2e476]:
+                    - generic [ref=f2e495]:
+                      - generic [ref=f2e496]:
+                        - generic [ref=f2e497]: Oct 18
+                        - generic [ref=f2e499]: Oct 23
+                        - generic [ref=f2e501]: Oct 29
+                        - generic [ref=f2e503]: Nov 7
+                      - generic [ref=f2e505]:
+                        - generic [ref=f2e506]: "0"
+                        - generic [ref=f2e508]: "1"
+                        - generic [ref=f2e510]: "2"
+                        - generic [ref=f2e512]: "3"
+                - list [ref=f2e515]:
+                  - listitem [ref=f2e516]:
+                    - generic [ref=f2e517]: "Falling:"
+                    - generic [ref=f2e522]:
+                      - strong [ref=f2e523]: Appetite
+                      - text: below baseline in 7 of the last 7 check-ins
+                  - listitem [ref=f2e524]:
+                    - generic [ref=f2e525]: "New:"
+                    - generic [ref=f2e529]:
+                      - strong [ref=f2e530]: Cognition
+                      - text: ": first time misidentifying a family member (today)"
+              - region [ref=f2e531]:
+                - generic [ref=f2e532]:
+                  - generic [ref=f2e533]:
+                    - heading "Latest check-in" [level=2] [ref=f2e534]
+                    - paragraph [ref=f2e535]: Walter Morrison · from Sarah (daughter) · Today, 4:22 PM · 0:48
+                  - generic [ref=f2e536]:
+                    - text: Urgent
+                    - generic [ref=f2e537]: · 83
+                - region "AI summary" [ref=f2e538]:
+                  - paragraph [ref=f2e539]: AI summary · verify against transcript
+                  - generic [ref=f2e543]: "Eating much less than usual. Significant change in memory or awareness. Seems a little off or low. Taking medications as prescribed. Caregiver reports feeling tired. Flagged: New confusion, Appetite ↓ 3 wks."
+                - heading "Transcript" [level=3] [ref=f2e544]
+                - blockquote [ref=f2e545]:
+                  - text: “
+                  - mark [ref=f2e546]:
+                    - text: Dad barely touched his dinner again tonight
+                    - generic [ref=f2e547]: (Appetite)
+                  - text: ", maybe a few bites."
+                  - mark [ref=f2e548]:
+                    - text: And this morning he called me by my mom's name
+                    - generic [ref=f2e549]: (Cognition)
+                  - text: ", which he's never done before."
+                  - mark [ref=f2e550]:
+                    - text: He seemed a bit off all day honestly.
+                    - generic [ref=f2e551]: (Mood)
+                  - text: He did take all his pills though.
+                  - mark [ref=f2e552]:
+                    - text: I'm pretty tired.
+                    - generic [ref=f2e553]: (Caregiver strain)
+                  - text: ”
+                - generic [ref=f2e554]:
+                  - button "Send guidance" [ref=f2e555]
+                  - button "Schedule call" [ref=f2e556]
+                  - button "Mark reviewed" [ref=f2e557]
+    - region "Notifications alt+T"
+  - generic [aria-hidden] [ref=f2e558]: "0"

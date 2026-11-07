@@ -10,7 +10,7 @@ import type {
   ScheduleCallRequest,
   SimulateRequest,
 } from "@careos/shared";
-import { useMutation, useQuery, useQueryClient, type QueryClient } from "@tanstack/react-query";
+import { keepPreviousData, useMutation, useQuery, useQueryClient, type QueryClient } from "@tanstack/react-query";
 import { api } from "./api";
 
 /** How often the live lists refresh, so a check-in in one window shows up in another. */
@@ -64,6 +64,8 @@ export function useQueue(filter: QueueFilter = "all", sort: QueueSort = "risk") 
     queryKey: keys.queue(filter, sort),
     queryFn: () => api.queue(filter, sort),
     refetchInterval: POLL_MS,
+    // Changing the filter or sort keeps the current table on screen until the new one loads.
+    placeholderData: keepPreviousData,
   });
 }
 
@@ -122,6 +124,7 @@ export function useMessages(patientId: string | undefined) {
     queryKey: keys.messages(patientId ?? ""),
     queryFn: () => api.messages(patientId!),
     enabled: Boolean(patientId),
+    refetchInterval: POLL_MS,
   });
 }
 
@@ -173,7 +176,8 @@ export function useScheduleCall() {
   return useMutation({
     mutationFn: ({ patientId, ...input }: ScheduleCallRequest & { patientId: string }) =>
       api.scheduleCall(patientId, input),
-    onSuccess: (action) => invalidate(client, keys.patient(action.patientId), keys.familyHomeAll),
+    onSuccess: (action) =>
+      invalidate(client, keys.queueAll, keys.patient(action.patientId), keys.familyHomeAll),
   });
 }
 
@@ -181,7 +185,7 @@ export function useGenerateCallNote() {
   const client = useQueryClient();
   return useMutation({
     mutationFn: (patientId: string) => api.generateCallNote(patientId),
-    onSuccess: (action) => invalidate(client, keys.patient(action.patientId)),
+    onSuccess: (action) => invalidate(client, keys.queueAll, keys.patient(action.patientId)),
   });
 }
 
@@ -234,7 +238,8 @@ export function useConfirmCallRequest() {
   return useMutation({
     mutationFn: ({ callRequestId, ...input }: ConfirmCallRequest & { callRequestId: string }) =>
       api.confirmCallRequest(callRequestId, input),
-    onSuccess: (request) => invalidate(client, keys.patient(request.patientId), keys.familyHomeAll),
+    onSuccess: (request) =>
+      invalidate(client, keys.queueAll, keys.patient(request.patientId), keys.familyHomeAll),
   });
 }
 

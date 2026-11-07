@@ -1,19 +1,10 @@
-import { Link, useParams } from "react-router";
+import { Link } from "react-router";
 import { PageTitle } from "@/components/PageTitle";
 import { Placeholder } from "@/components/Placeholder";
 
 // Stand-ins for the routes built in tasks 3–5. Each later task replaces one.
 
-// --- Nurse (Task 3) ---
-export const TriageQueuePage = () => <Placeholder title="Triage queue" task={3} />;
-export function PatientDetailPage() {
-  const { id } = useParams();
-  return (
-    <Placeholder title="Patient detail" task={3}>
-      <p className="text-sm text-muted-foreground">Patient {id}</p>
-    </Placeholder>
-  );
-}
+// --- Nurse (Task 3 builds the triage queue and patient detail in pages/nurse/) ---
 export const FamiliesPage = () => <Placeholder title="Families" task={3} />;
 export const MessagesPage = () => <Placeholder title="Messages" task={3} />;
 export const ScheduledCallsPage = () => <Placeholder title="Scheduled calls" task={3} />;

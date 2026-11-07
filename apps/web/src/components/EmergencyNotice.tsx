@@ -8,10 +8,12 @@ interface EmergencyNoticeProps {
    * "reminder": the quiet standing line under the family home.
    */
   variant?: "alert" | "reminder";
+  /** Who reads the alert. The nurse view tells the nurse what to advise. */
+  audience?: "family" | "nurse";
   className?: string;
 }
 
-export function EmergencyNotice({ variant = "alert", className }: EmergencyNoticeProps) {
+export function EmergencyNotice({ variant = "alert", audience = "family", className }: EmergencyNoticeProps) {
   if (variant === "reminder") {
     return (
       <p className={cn("flex items-center gap-2 text-sm text-body-2", className)}>
@@ -33,7 +35,9 @@ export function EmergencyNotice({ variant = "alert", className }: EmergencyNotic
       <div>
         <p className="text-[15px] font-semibold">This may be an emergency. Call 911 now.</p>
         <p className="text-sm">
-          The check-in mentions symptoms that need urgent help. Don't wait for a nurse to reply.
+          {audience === "nurse"
+            ? "The check-in mentions emergency terms. Tell the family to call 911 now, then follow up."
+            : "The check-in mentions symptoms that need urgent help. Don't wait for a nurse to reply."}
         </p>
       </div>
     </div>

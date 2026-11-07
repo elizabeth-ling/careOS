@@ -1,0 +1,84 @@
+- generic [ref=f2e2]:
+  - generic [ref=f2e4]:
+    - complementary "Nurse navigation" [ref=f2e5]:
+      - link "CareOS triage queue" [ref=f2e6] [cursor=pointer]:
+        - /url: /nurse
+        - generic [ref=f2e7]: CareOS
+      - navigation "Main" [ref=f2e13]:
+        - link "Triage queue" [ref=f2e14] [cursor=pointer]:
+          - /url: /nurse
+        - link "Families" [ref=f2e18] [cursor=pointer]:
+          - /url: /nurse/families
+        - link "Messages" [ref=f2e25] [cursor=pointer]:
+          - /url: /nurse/messages
+        - link "Scheduled calls" [ref=f2e29] [cursor=pointer]:
+          - /url: /nurse/calls
+        - link "Care summaries" [ref=f2e33] [cursor=pointer]:
+          - /url: /nurse/summaries
+      - generic [ref=f2e38]:
+        - generic [ref=f2e39]:
+          - paragraph [ref=f2e40]: On shift
+          - paragraph [ref=f2e42]: 3 nurses · – families · until 7 PM
+        - link "Settings" [ref=f2e43] [cursor=pointer]:
+          - /url: /nurse/settings
+    - generic [ref=f2e51]:
+      - banner [ref=f2e52]:
+        - search [ref=f2e53]:
+          - generic [ref=f2e54]: Search patients, families, notes
+          - searchbox "Search patients, families, notes" [ref=f2e55]
+        - generic [ref=f2e56]:
+          - navigation "Switch view" [ref=f2e57]:
+            - link "Family view" [ref=f2e58] [cursor=pointer]:
+              - /url: /family
+            - link "Nurse view" [ref=f2e59] [cursor=pointer]:
+              - /url: /nurse
+          - button "Notifications" [ref=f2e60]
+      - main [ref=f2e65]:
+        - generic [ref=f2e66]:
+          - generic [ref=f2e67]:
+            - generic [ref=f2e68]:
+              - heading "Triage queue" [level=1] [ref=f2e69]
+              - paragraph [ref=f2e70]: Saturday, November 7 · Ranked by check-in content, red-flag rules and change from each patient's own baseline
+            - generic [ref=f2e71]:
+              - button "Export" [disabled]
+              - button "Start rounds" [disabled]
+          - region "Triage queue" [ref=f2e77]:
+            - generic [ref=f2e78]:
+              - group "Filter the queue" [ref=f2e79]:
+                - button "All" [pressed] [ref=f2e80]
+                - button "Urgent" [ref=f2e81]
+                - button "Watch" [ref=f2e82]
+                - button "Stable" [ref=f2e83]
+                - button "Reviewed today" [ref=f2e84]
+              - generic [ref=f2e85]:
+                - generic [ref=f2e86]: Sort by
+                - combobox "Sort by" [ref=f2e87]:
+                  - option "Risk score" [selected]
+                  - option "Most recent"
+                  - option "Longest unreviewed"
+            - table [ref=f2e89]:
+              - rowgroup [ref=f2e90]:
+                - row [ref=f2e91]:
+                  - columnheader [ref=f2e92]:
+                    - generic [ref=f2e93]:
+                      - text: Risk
+                      - button "How the ranking works" [ref=f2e94]
+                  - columnheader "Patient" [ref=f2e98]
+                  - columnheader "Caregiver" [ref=f2e99]
+                  - columnheader "Why flagged" [ref=f2e100]
+                  - columnheader "14-day trend" [ref=f2e101]
+                  - columnheader "Last check-in" [ref=f2e102]
+                  - columnheader "Action" [ref=f2e103]
+              - rowgroup [ref=f2e105]:
+                - row [ref=f2e106]:
+                  - cell [ref=f2e107]
+                - row [ref=f2e109]:
+                  - cell [ref=f2e110]
+                - row [ref=f2e112]:
+                  - cell [ref=f2e113]
+                - row [ref=f2e115]:
+                  - cell [ref=f2e116]
+                - row [ref=f2e118]:
+                  - cell [ref=f2e119]
+            - paragraph [ref=f2e121]: AI ranking supports triage only. Clinical decisions remain with the nurse.
+  - region "Notifications alt+T"

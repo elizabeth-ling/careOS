@@ -1,0 +1,466 @@
+- generic [active] [ref=f3e1]:
+  - generic [ref=f3e2]:
+    - generic [ref=f3e4]:
+      - complementary "Nurse navigation" [ref=f3e5]:
+        - link "CareOS triage queue" [ref=f3e6] [cursor=pointer]:
+          - /url: /nurse
+          - generic [ref=f3e7]: CareOS
+        - navigation "Main" [ref=f3e13]:
+          - link "Triage queue 4 unreviewed" [ref=f3e593] [cursor=pointer]:
+            - /url: /nurse
+            - generic [ref=f3e17]: Triage queue
+            - generic [ref=f3e126]:
+              - text: "4"
+              - generic [ref=f3e127]: unreviewed
+          - link "Families" [ref=f3e18] [cursor=pointer]:
+            - /url: /nurse/families
+          - link "Messages" [ref=f3e25] [cursor=pointer]:
+            - /url: /nurse/messages
+          - link "Scheduled calls" [ref=f3e29] [cursor=pointer]:
+            - /url: /nurse/calls
+          - link "Care summaries" [ref=f3e33] [cursor=pointer]:
+            - /url: /nurse/summaries
+        - generic [ref=f3e38]:
+          - generic [ref=f3e39]:
+            - paragraph [ref=f3e40]: On shift
+            - paragraph [ref=f3e42]: 3 nurses · 8 families · until 7 PM
+          - link "Settings" [ref=f3e43] [cursor=pointer]:
+            - /url: /nurse/settings
+          - button "PS Priya Sharma, RN Maple Grove Care Home Account" [ref=f3e128]:
+            - generic [ref=f3e129]: PS
+            - generic [ref=f3e131]:
+              - generic [ref=f3e132]: Priya Sharma, RN
+              - generic [ref=f3e133]: Maple Grove Care Home
+            - generic [ref=f3e137]: Account
+      - generic [ref=f3e51]:
+        - banner [ref=f3e52]:
+          - search [ref=f3e53]:
+            - generic [ref=f3e54]: Search patients, families, notes
+            - searchbox "Search patients, families, notes" [ref=f3e55]
+          - generic [ref=f3e56]:
+            - navigation "Switch view" [ref=f3e57]:
+              - link "Family view" [ref=f3e58] [cursor=pointer]:
+                - /url: /family
+              - link "Nurse view" [ref=f3e59] [cursor=pointer]:
+                - /url: /nurse
+            - button "Notifications" [ref=f3e594]
+        - main [ref=f3e65]:
+          - generic [ref=f3e140]:
+            - region "Patient" [ref=f3e141]:
+              - link "Triage queue" [ref=f3e142] [cursor=pointer]:
+                - /url: /nurse
+              - generic [ref=f3e146]:
+                - generic [ref=f3e147]: MO
+                - generic [ref=f3e149]:
+                  - heading "Margaret Okafor" [level=1] [ref=f3e152]
+                  - paragraph [ref=f3e153]: "88 · Osteoporosis, CHF · Caregiver: David Okafor (son) · Maple Grove Care Home"
+                  - generic [ref=f3e154]:
+                    - generic [ref=f3e155]:
+                      - generic [ref=f3e156]: Risk score
+                      - text: "74"
+                    - list "Why flagged" [ref=f3e157]:
+                      - listitem [ref=f3e158]:
+                        - generic [ref=f3e159]: Fall reported
+                      - listitem [ref=f3e160]:
+                        - generic [ref=f3e161]: Mobility ↓
+              - generic [ref=f3e162]:
+                - button "Send guidance" [ref=f3e163]
+                - button "Schedule call" [ref=f3e164]
+                - button "Reviewed" [disabled]
+                - link "Generate care summary" [ref=f3e166] [cursor=pointer]:
+                  - /url: /summary/5c7e0c51-3c4b-49cb-bd93-5613bb118358
+            - generic [ref=f3e167]:
+              - generic [ref=f3e168]:
+                - region [ref=f3e169]:
+                  - generic [ref=f3e170]:
+                    - generic [ref=f3e171]:
+                      - heading "AI summary" [level=2] [ref=f3e172]
+                      - paragraph [ref=f3e173]: Latest check-in · from David · Today, 2:15 PM · 0:41
+                    - generic [ref=f3e174]: Reviewed
+                  - region "AI summary" [ref=f3e175]:
+                    - paragraph [ref=f3e176]: AI summary · verify against transcript
+                    - generic [ref=f3e180]: "Sleep slightly unsettled. Serious mobility event reported. Seems a little off or low. Mild aches or soreness. Flagged: Fall reported, Mobility ↓."
+                - region [ref=f3e181]:
+                  - generic [ref=f3e183]:
+                    - heading "Changes from baseline" [level=2] [ref=f3e184]
+                    - paragraph [ref=f3e185]: Compared with this patient's own last 14 days
+                  - paragraph [ref=f3e186]: No changes from baseline.
+                - region [ref=f3e187]:
+                  - generic [ref=f3e189]:
+                    - heading "Domain trends" [level=2] [ref=f3e190]
+                    - paragraph [ref=f3e191]: "Severity 0–3 over 6 weeks. Shaded: this patient's baseline."
+                  - generic [ref=f3e192]:
+                    - generic [ref=f3e193]:
+                      - heading "Appetite" [level=4] [ref=f3e194]
+                      - paragraph [ref=f3e195]: 0/3 · base 0.0
+                      - 'img "Appetite: latest severity 0 of 3, baseline 0.0" [ref=f3e196]':
+                        - application [ref=f3e199]
+                    - generic [ref=f3e203]:
+                      - heading "Sleep" [level=4] [ref=f3e204]
+                      - paragraph [ref=f3e205]: 1/3 · base 1.0
+                      - 'img "Sleep: latest severity 1 of 3, baseline 1.0" [ref=f3e206]':
+                        - application [ref=f3e209]
+                    - generic [ref=f3e213]:
+                      - heading "Mobility" [level=4] [ref=f3e214]
+                      - paragraph [ref=f3e215]: 3/3 · base 0.5
+                      - 'img "Mobility: latest severity 3 of 3, baseline 0.5" [ref=f3e216]':
+                        - application [ref=f3e219]
+                    - generic [ref=f3e227]:
+                      - heading "Cognition" [level=4] [ref=f3e228]
+                      - paragraph [ref=f3e229]: 0/3 · base 0.0
+                      - 'img "Cognition: latest severity 0 of 3, baseline 0.0" [ref=f3e230]':
+                        - application [ref=f3e233]
+                    - generic [ref=f3e237]:
+                      - heading "Mood" [level=4] [ref=f3e238]
+                      - paragraph [ref=f3e239]: 1/3 · base 1.0
+                      - 'img "Mood: latest severity 1 of 3, baseline 1.0" [ref=f3e240]':
+                        - application [ref=f3e243]
+                    - generic [ref=f3e247]:
+                      - heading "Pain" [level=4] [ref=f3e248]
+                      - paragraph [ref=f3e249]: 1/3 · base 0.2
+                      - 'img "Pain: latest severity 1 of 3, baseline 0.2" [ref=f3e250]':
+                        - application [ref=f3e253]
+                    - generic [ref=f3e261]:
+                      - heading "Medications" [level=4] [ref=f3e262]
+                      - paragraph [ref=f3e263]: 0/3 · base 0.0
+                      - 'img "Medications: latest severity 0 of 3, baseline 0.0" [ref=f3e264]':
+                        - application [ref=f3e267]
+                    - generic [ref=f3e271]:
+                      - heading "Caregiver strain" [level=4] [ref=f3e272]
+                      - paragraph [ref=f3e273]: 0/3 · base 0.0
+                      - 'img "Caregiver strain: latest severity 0 of 3, baseline 0.0" [ref=f3e274]':
+                        - application [ref=f3e277]
+                - region [ref=f3e281]:
+                  - generic [ref=f3e283]:
+                    - heading "Transcript" [level=2] [ref=f3e284]
+                    - paragraph [ref=f3e285]: Today, 2:15 PM · 0:41
+                  - generic [ref=f3e286]:
+                    - generic [ref=f3e291]: 0:41
+                    - generic [ref=f3e292]: No audio was stored for this check-in. The transcript is below.
+                  - blockquote [ref=f3e293]:
+                    - text: “
+                    - mark [ref=f3e294]:
+                      - text: Mom fell in the bathroom this morning when she got up.
+                      - generic [ref=f3e295]: (Mobility)
+                    - mark [ref=f3e296]:
+                      - text: She says her hip is sore but she can still walk with help.
+                      - generic [ref=f3e297]: (Pain)
+                    - mark [ref=f3e298]:
+                      - text: She was a bit restless at bedtime and she seemed a bit down after it all.
+                      - generic [ref=f3e299]: (Sleep)
+                    - text: ”
+              - generic [ref=f3e300]:
+                - region [ref=f3e301]:
+                  - generic [ref=f3e303]:
+                    - heading "Caregiver wellbeing" [level=2] [ref=f3e304]
+                    - paragraph [ref=f3e305]: David Okafor · caregiver strain, 6 weeks
+                  - generic [ref=f3e306]:
+                    - heading "Caregiver strain" [level=4] [ref=f3e307]
+                    - paragraph [ref=f3e308]: 0/3 · base 0.0
+                    - 'img "Caregiver strain: latest severity 0 of 3, baseline 0.0" [ref=f3e309]':
+                      - application [ref=f3e312]
+                  - region "AI summary" [ref=f3e316]:
+                    - paragraph [ref=f3e317]: AI summary · verify against transcript
+                    - generic [ref=f3e321]: Not mentioned in this check-in.
+                - region [ref=f3e322]:
+                  - generic [ref=f3e324]:
+                    - heading "Check-in history" [level=2] [ref=f3e325]
+                    - paragraph [ref=f3e326]: 17 check-ins
+                  - list [ref=f3e327]:
+                    - listitem [ref=f3e328]:
+                      - button "Risk score 74 Today, 2:15 PM Fall reported, Mobility ↓ Reviewed" [pressed] [ref=f3e595]:
+                        - generic [ref=f3e330]:
+                          - generic [ref=f3e331]: Risk score
+                          - text: "74"
+                        - generic [ref=f3e332]:
+                          - generic [ref=f3e333]: Today, 2:15 PM
+                          - generic [ref=f3e334]: Fall reported, Mobility ↓
+                        - generic [ref=f3e335]: Reviewed
+                    - listitem [ref=f3e336]:
+                      - button "Risk score 12 Nov 5, 1:53 PM No changes New" [ref=f3e337]:
+                        - generic [ref=f3e338]:
+                          - generic [ref=f3e339]: Risk score
+                          - text: "12"
+                        - generic [ref=f3e340]:
+                          - generic [ref=f3e341]: Nov 5, 1:53 PM
+                          - generic [ref=f3e342]: No changes
+                        - generic [ref=f3e343]: New
+                    - listitem [ref=f3e344]:
+                      - button "Risk score 12 Nov 4, 1:31 PM No changes Reviewed" [ref=f3e345]:
+                        - generic [ref=f3e346]:
+                          - generic [ref=f3e347]: Risk score
+                          - text: "12"
+                        - generic [ref=f3e348]:
+                          - generic [ref=f3e349]: Nov 4, 1:31 PM
+                          - generic [ref=f3e350]: No changes
+                        - generic [ref=f3e351]: Reviewed
+                    - listitem [ref=f3e352]:
+                      - button "Risk score 12 Nov 2, 4:13 PM No changes Reviewed" [ref=f3e353]:
+                        - generic [ref=f3e354]:
+                          - generic [ref=f3e355]: Risk score
+                          - text: "12"
+                        - generic [ref=f3e356]:
+                          - generic [ref=f3e357]: Nov 2, 4:13 PM
+                          - generic [ref=f3e358]: No changes
+                        - generic [ref=f3e359]: Reviewed
+                    - listitem [ref=f3e360]:
+                      - button "Risk score 12 Oct 30, 5:00 PM No changes Guidance sent" [ref=f3e361]:
+                        - generic [ref=f3e362]:
+                          - generic [ref=f3e363]: Risk score
+                          - text: "12"
+                        - generic [ref=f3e364]:
+                          - generic [ref=f3e365]: Oct 30, 5:00 PM
+                          - generic [ref=f3e366]: No changes
+                        - generic [ref=f3e367]: Guidance sent
+                    - listitem [ref=f3e368]:
+                      - button "Risk score 12 Oct 27, 4:55 PM No changes Reviewed" [ref=f3e369]:
+                        - generic [ref=f3e370]:
+                          - generic [ref=f3e371]: Risk score
+                          - text: "12"
+                        - generic [ref=f3e372]:
+                          - generic [ref=f3e373]: Oct 27, 4:55 PM
+                          - generic [ref=f3e374]: No changes
+                        - generic [ref=f3e375]: Reviewed
+                    - listitem [ref=f3e376]:
+                      - button "Risk score 12 Oct 24, 5:03 PM No changes Reviewed" [ref=f3e377]:
+                        - generic [ref=f3e378]:
+                          - generic [ref=f3e379]: Risk score
+                          - text: "12"
+                        - generic [ref=f3e380]:
+                          - generic [ref=f3e381]: Oct 24, 5:03 PM
+                          - generic [ref=f3e382]: No changes
+                        - generic [ref=f3e383]: Reviewed
+                    - listitem [ref=f3e384]:
+                      - button "Risk score 12 Oct 23, 4:54 PM No changes Guidance sent" [ref=f3e385]:
+                        - generic [ref=f3e386]:
+                          - generic [ref=f3e387]: Risk score
+                          - text: "12"
+                        - generic [ref=f3e388]:
+                          - generic [ref=f3e389]: Oct 23, 4:54 PM
+                          - generic [ref=f3e390]: No changes
+                        - generic [ref=f3e391]: Guidance sent
+                    - listitem [ref=f3e392]:
+                      - button "Risk score 12 Oct 21, 4:24 PM No changes Reviewed" [ref=f3e393]:
+                        - generic [ref=f3e394]:
+                          - generic [ref=f3e395]: Risk score
+                          - text: "12"
+                        - generic [ref=f3e396]:
+                          - generic [ref=f3e397]: Oct 21, 4:24 PM
+                          - generic [ref=f3e398]: No changes
+                        - generic [ref=f3e399]: Reviewed
+                    - listitem [ref=f3e400]:
+                      - button "Risk score 12 Oct 18, 3:25 PM No changes Reviewed" [ref=f3e401]:
+                        - generic [ref=f3e402]:
+                          - generic [ref=f3e403]: Risk score
+                          - text: "12"
+                        - generic [ref=f3e404]:
+                          - generic [ref=f3e405]: Oct 18, 3:25 PM
+                          - generic [ref=f3e406]: No changes
+                        - generic [ref=f3e407]: Reviewed
+                    - listitem [ref=f3e408]:
+                      - button "Risk score 12 Oct 17, 3:34 PM No changes Guidance sent" [ref=f3e409]:
+                        - generic [ref=f3e410]:
+                          - generic [ref=f3e411]: Risk score
+                          - text: "12"
+                        - generic [ref=f3e412]:
+                          - generic [ref=f3e413]: Oct 17, 3:34 PM
+                          - generic [ref=f3e414]: No changes
+                        - generic [ref=f3e415]: Guidance sent
+                    - listitem [ref=f3e416]:
+                      - button "Risk score 12 Oct 15, 4:00 PM No changes Reviewed" [ref=f3e417]:
+                        - generic [ref=f3e418]:
+                          - generic [ref=f3e419]: Risk score
+                          - text: "12"
+                        - generic [ref=f3e420]:
+                          - generic [ref=f3e421]: Oct 15, 4:00 PM
+                          - generic [ref=f3e422]: No changes
+                        - generic [ref=f3e423]: Reviewed
+                    - listitem [ref=f3e424]:
+                      - button "Risk score 12 Oct 12, 4:12 PM No changes Reviewed" [ref=f3e425]:
+                        - generic [ref=f3e426]:
+                          - generic [ref=f3e427]: Risk score
+                          - text: "12"
+                        - generic [ref=f3e428]:
+                          - generic [ref=f3e429]: Oct 12, 4:12 PM
+                          - generic [ref=f3e430]: No changes
+                        - generic [ref=f3e431]: Reviewed
+                    - listitem [ref=f3e432]:
+                      - button "Risk score 12 Oct 9, 4:22 PM No changes Guidance sent" [ref=f3e433]:
+                        - generic [ref=f3e434]:
+                          - generic [ref=f3e435]: Risk score
+                          - text: "12"
+                        - generic [ref=f3e436]:
+                          - generic [ref=f3e437]: Oct 9, 4:22 PM
+                          - generic [ref=f3e438]: No changes
+                        - generic [ref=f3e439]: Guidance sent
+                    - listitem [ref=f3e440]:
+                      - button "Risk score 12 Oct 7, 4:44 PM No changes Reviewed" [ref=f3e441]:
+                        - generic [ref=f3e442]:
+                          - generic [ref=f3e443]: Risk score
+                          - text: "12"
+                        - generic [ref=f3e444]:
+                          - generic [ref=f3e445]: Oct 7, 4:44 PM
+                          - generic [ref=f3e446]: No changes
+                        - generic [ref=f3e447]: Reviewed
+                    - listitem [ref=f3e448]:
+                      - button "Risk score 12 Oct 6, 4:14 PM No changes Reviewed" [ref=f3e449]:
+                        - generic [ref=f3e450]:
+                          - generic [ref=f3e451]: Risk score
+                          - text: "12"
+                        - generic [ref=f3e452]:
+                          - generic [ref=f3e453]: Oct 6, 4:14 PM
+                          - generic [ref=f3e454]: No changes
+                        - generic [ref=f3e455]: Reviewed
+                    - listitem [ref=f3e456]:
+                      - button "Risk score 20 Oct 4, 4:44 PM No changes Guidance sent" [ref=f3e457]:
+                        - generic [ref=f3e458]:
+                          - generic [ref=f3e459]: Risk score
+                          - text: "20"
+                        - generic [ref=f3e460]:
+                          - generic [ref=f3e461]: Oct 4, 4:44 PM
+                          - generic [ref=f3e462]: No changes
+                        - generic [ref=f3e463]: Guidance sent
+                - region [ref=f3e464]:
+                  - heading "Care notes" [level=2] [ref=f3e467]
+                  - list [ref=f3e468]:
+                    - listitem [ref=f3e665]:
+                      - generic [ref=f3e668]: Call scheduled for Nov 8, 10:00 AM
+                      - paragraph [ref=f3e670]:
+                        - text: Priya Sharma, RN ·
+                        - time [ref=f3e671]: Just now
+                    - listitem [ref=f3e610]:
+                      - generic [ref=f3e613]:
+                        - generic [ref=f3e614]: Call note
+                        - generic [ref=f3e615]: Documented via Vox Advantage
+                      - paragraph [ref=f3e616]:
+                        - text: Priya Sharma, RN ·
+                        - time [ref=f3e617]: Just now
+                      - region "AI summary" [ref=f3e618]:
+                        - paragraph [ref=f3e619]: AI summary · verify against transcript
+                        - generic [ref=f3e624]:
+                          - generic [ref=f3e625]:
+                            - term [ref=f3e626]: Reason
+                            - definition [ref=f3e627]: "Call with David Okafor (Son) about Margaret Okafor: Fall reported, Mobility ↓."
+                          - generic [ref=f3e628]:
+                            - term [ref=f3e629]: Assessment
+                            - definition [ref=f3e630]: Caregiver describes the changes above. No emergency symptoms reported during the call.
+                          - generic [ref=f3e631]:
+                            - term [ref=f3e632]: Plan
+                            - definition [ref=f3e633]: Continue daily check-ins. Caregiver to report any new symptoms or changes straight away.
+                          - generic [ref=f3e634]:
+                            - term [ref=f3e635]: Follow-up
+                            - definition [ref=f3e636]: Nurse to review the next check-in and call back within 48 hours.
+                    - listitem [ref=f3e596]:
+                      - generic [ref=f3e599]: Check-in reviewed
+                      - paragraph [ref=f3e601]:
+                        - text: Priya Sharma, RN ·
+                        - time [ref=f3e602]: Just now
+                    - listitem [ref=f3e469]:
+                      - generic [ref=f3e472]: Check-in reviewed
+                      - paragraph [ref=f3e474]:
+                        - text: Priya Sharma, RN ·
+                        - time [ref=f3e475]: 3 days ago
+                    - listitem [ref=f3e476]:
+                      - generic [ref=f3e479]: Check-in reviewed
+                      - paragraph [ref=f3e481]:
+                        - text: Priya Sharma, RN ·
+                        - time [ref=f3e482]: 5 days ago
+                    - listitem [ref=f3e483]:
+                      - generic [ref=f3e486]: Guidance sent
+                      - paragraph [ref=f3e488]:
+                        - text: Priya Sharma, RN ·
+                        - time [ref=f3e489]: Oct 30
+                      - paragraph [ref=f3e490]: Thanks for letting me know. Nothing here worries me today, and I'll keep an eye on the trend.
+                    - listitem [ref=f3e491]:
+                      - generic [ref=f3e494]: Check-in reviewed
+                      - paragraph [ref=f3e496]:
+                        - text: Priya Sharma, RN ·
+                        - time [ref=f3e497]: Oct 27
+                    - listitem [ref=f3e498]:
+                      - generic [ref=f3e501]: Check-in reviewed
+                      - paragraph [ref=f3e503]:
+                        - text: Priya Sharma, RN ·
+                        - time [ref=f3e504]: Oct 24
+                    - listitem [ref=f3e505]:
+                      - generic [ref=f3e508]: Guidance sent
+                      - paragraph [ref=f3e510]:
+                        - text: Priya Sharma, RN ·
+                        - time [ref=f3e511]: Oct 23
+                      - paragraph [ref=f3e512]: That's helpful, thank you. Please tell me if anything changes over the next few days.
+                    - listitem [ref=f3e513]:
+                      - generic [ref=f3e516]: Check-in reviewed
+                      - paragraph [ref=f3e518]:
+                        - text: Priya Sharma, RN ·
+                        - time [ref=f3e519]: Oct 21
+                    - listitem [ref=f3e520]:
+                      - generic [ref=f3e523]: Check-in reviewed
+                      - paragraph [ref=f3e525]:
+                        - text: Priya Sharma, RN ·
+                        - time [ref=f3e526]: Oct 18
+                    - listitem [ref=f3e527]:
+                      - generic [ref=f3e530]: Guidance sent
+                      - paragraph [ref=f3e532]:
+                        - text: Priya Sharma, RN ·
+                        - time [ref=f3e533]: Oct 17
+                      - paragraph [ref=f3e534]: Thanks for the update. This looks steady compared with recent weeks. Keep doing what you're doing.
+                    - listitem [ref=f3e535]:
+                      - generic [ref=f3e538]: Check-in reviewed
+                      - paragraph [ref=f3e540]:
+                        - text: Priya Sharma, RN ·
+                        - time [ref=f3e541]: Oct 15
+                    - listitem [ref=f3e542]:
+                      - generic [ref=f3e545]: Check-in reviewed
+                      - paragraph [ref=f3e547]:
+                        - text: Priya Sharma, RN ·
+                        - time [ref=f3e548]: Oct 12
+                    - listitem [ref=f3e549]:
+                      - generic [ref=f3e552]: Guidance sent
+                      - paragraph [ref=f3e554]:
+                        - text: Priya Sharma, RN ·
+                        - time [ref=f3e555]: Oct 9
+                      - paragraph [ref=f3e556]: That's helpful, thank you. Please tell me if anything changes over the next few days.
+                    - listitem [ref=f3e557]:
+                      - generic [ref=f3e560]: Check-in reviewed
+                      - paragraph [ref=f3e562]:
+                        - text: Priya Sharma, RN ·
+                        - time [ref=f3e563]: Oct 7
+                    - listitem [ref=f3e564]:
+                      - generic [ref=f3e567]: Check-in reviewed
+                      - paragraph [ref=f3e569]:
+                        - text: Priya Sharma, RN ·
+                        - time [ref=f3e570]: Oct 6
+                    - listitem [ref=f3e571]:
+                      - generic [ref=f3e574]: Guidance sent
+                      - paragraph [ref=f3e576]:
+                        - text: Priya Sharma, RN ·
+                        - time [ref=f3e577]: Oct 4
+                      - paragraph [ref=f3e578]: Thanks for the update. This looks steady compared with recent weeks. Keep doing what you're doing.
+                  - button "Document call with Vox Advantage" [ref=f3e579]
+                - region [ref=f3e580]:
+                  - heading "Messages from family" [level=2] [ref=f3e583]
+                  - list [ref=f3e584]:
+                    - listitem [ref=f3e585]:
+                      - paragraph [ref=f3e586]: Should Mom see someone about her hip after this morning?
+                      - paragraph [ref=f3e587]:
+                        - text: David Okafor ·
+                        - time [ref=f3e588]: 1 hour ago
+                    - listitem [ref=f3e679]:
+                      - paragraph [ref=f3e680]: Test reply from nurse
+                      - paragraph [ref=f3e681]:
+                        - text: Priya Sharma, RN ·
+                        - time [ref=f3e682]: Just now
+                    - listitem [ref=f3e683]:
+                      - paragraph [ref=f3e684]: Thanks David, I will call tomorrow.
+                      - paragraph [ref=f3e685]:
+                        - text: Priya Sharma, RN ·
+                        - time [ref=f3e686]: Just now
+                  - generic [ref=f3e589]:
+                    - generic [ref=f3e590]: Reply to David
+                    - textbox "Reply to David" [ref=f3e591]:
+                      - /placeholder: Write a reply…
+                    - button "Send reply" [disabled]
+    - region "Notifications alt+T":
+      - list:
+        - listitem [ref=f3e687]:
+          - generic [ref=f3e692]: Message sent to David
+  - generic [aria-hidden] [ref=f3e592]: "0"
