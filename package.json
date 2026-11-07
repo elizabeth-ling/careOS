@@ -1,0 +1,28 @@
+{
+  "name": "careos",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "engines": { "node": ">=20.19" },
+  "workspaces": ["packages/*", "apps/*"],
+  "scripts": {
+    "db:up": "docker compose up -d --wait",
+    "db:generate": "npm run db:generate -w @careos/api",
+    "db:migrate": "npm run db:migrate -w @careos/api",
+    "db:deploy": "npm run db:deploy -w @careos/api",
+    "db:seed": "npm run db:seed -w @careos/api",
+    "db:reset": "npm run db:reset -w @careos/api",
+    "db:studio": "npm run db:studio -w @careos/api --",
+    "dev": "concurrently -n api,web -c green,cyan \"npm run dev -w @careos/api\" \"node scripts/dev-web.mjs\"",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit -p packages/shared && tsc --noEmit -p apps/api && tsc --noEmit -p .",
+    "smoke": "tsx scripts/smoke.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.43",
+    "concurrently": "^9.2.5",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.12"
+  }
+}

@@ -94,14 +94,20 @@ CareOS is a hackathon prototype, not a medical device. It should not be used wit
 - **State:** Zustand, persisted to `localStorage`
 - **Audio:** MediaRecorder and Web Audio APIs
 
-## Run it locally
+## Getting started
 
-No environment variables are needed.
+You need Node 20.19 or newer and Docker. From the repo root:
 
 ```bash
-npm install
-npm run dev
+npm i              # installs everything and generates the Prisma client
+npm run db:up      # starts Postgres 16 in Docker on port 5432
+npm run db:reset   # drops the local database, applies migrations and seeds demo data
+npm run dev        # API on http://localhost:8787/api (and the web app once it exists)
 ```
+
+No `.env` is needed for local development: the API falls back to the values in `.env.example`. To change them, copy it to `.env`. With `NODE_ENV=production` there are no fallbacks, so `DATABASE_URL` must be set and `DEMO_MODE` defaults to off.
+
+Other commands: `npm test` runs the unit tests, `npm run typecheck` checks types, `npm run smoke` calls every endpoint of a running API, `npm run db:studio` opens Prisma Studio, and `npm run db:deploy` applies migrations to a hosted database.
 
 The app includes demo controls, opened from the gear icon in the bottom-left corner. They can reset the data, simulate a check-in if the mic or wifi fails, trigger the emergency flow, and jump between screens.
 

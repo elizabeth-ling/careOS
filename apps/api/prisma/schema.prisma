@@ -1,0 +1,169 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum RiskTier {
+  urgent
+  watch
+  stable
+}
+
+enum CheckInStatus {
+  received
+  reviewed
+  guidance_sent
+}
+
+enum CheckInSource {
+  voice
+  upload
+  simulated
+}
+
+enum ActionType {
+  guidance
+  call_scheduled
+  call_note
+  reviewed
+}
+
+enum Role {
+  family
+  nurse
+}
+
+enum CallRequestStatus {
+  requested
+  confirmed
+  cancelled
+}
+
+model CareHome {
+  id        String    @id @default(uuid()) @db.Uuid
+  name      String
+  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  nurses    Nurse[]
+  patients  Patient[]
+
+  @@map("care_homes")
+}
+
+model Nurse {
+  id          String         @id @default(uuid()) @db.Uuid
+  careHomeId  String         @map("care_home_id") @db.Uuid
+  name        String
+  credentials String
+  createdAt   DateTime       @default(now()) @map("created_at") @db.Timestamptz(6)
+  careHome    CareHome       @relation(fields: [careHomeId], references: [id], onDelete: Cascade)
+  patients    Patient[]
+  actions     NurseAction[]
+
+  @@map("nurses")
+}
+
+model Patient {
+  id             String        @id @default(uuid()) @db.Uuid
+  name           String
+  age            Int
+  conditions     String[]
+  initials       String
+  careHomeId     String        @map("care_home_id") @db.Uuid
+  primaryNurseId String        @map("primary_nurse_id") @db.Uuid
+  createdAt      DateTime      @default(now()) @map("created_at") @db.Timestamptz(6)
+  careHome       CareHome      @relation(fields: [careHomeId], references: [id], onDelete: Cascade)
+  primaryNurse   Nurse         @relation(fields: [primaryNurseId], references: [id], onDelete: Cascade)
+  caregivers     Caregiver[]
+  checkIns       CheckIn[]
+  actions        NurseAction[]
+  messages       Message[]
+  callRequests   CallRequest[]
+
+  @@map("patients")
+}
+
+model Caregiver {
+  id           String        @id @default(uuid()) @db.Uuid
+  patientId    String        @map("patient_id") @db.Uuid
+  name         String
+  relationship String
+  createdAt    DateTime      @default(now()) @map("created_at") @db.Timestamptz(6)
+  patient      Patient       @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  checkIns     CheckIn[]
+  callRequests CallRequest[]
+
+  @@map("caregivers")
+}
+
+model CheckIn {
+  id          String        @id @default(uuid()) @db.Uuid
+  patientId   String        @map("patient_id") @db.Uuid
+  caregiverId String        @map("caregiver_id") @db.Uuid
+  durationSec Int           @map("duration_sec")
+  audioPath   String?       @map("audio_path")
+  transcript  String
+  aiSummary   String        @map("ai_summary")
+  domains     Json
+  riskScore   Int           @map("risk_score")
+  riskTier    RiskTier      @map("risk_tier")
+  flags       String[]
+  isEmergency Boolean       @map("is_emergency")
+  status      CheckInStatus @default(received)
+  source      CheckInSource
+  createdAt   DateTime      @default(now()) @map("created_at") @db.Timestamptz(6)
+  patient     Patient       @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  caregiver   Caregiver     @relation(fields: [caregiverId], references: [id], onDelete: Cascade)
+  actions     NurseAction[]
+
+  @@index([patientId, createdAt(sort: Desc)])
+  @@map("check_ins")
+}
+
+model NurseAction {
+  id           String     @id @default(uuid()) @db.Uuid
+  patientId    String     @map("patient_id") @db.Uuid
+  checkInId    String?    @map("check_in_id") @db.Uuid
+  nurseId      String     @map("nurse_id") @db.Uuid
+  type         ActionType
+  body         String
+  scheduledFor DateTime?  @map("scheduled_for") @db.Timestamptz(6)
+  source       String?
+  createdAt    DateTime   @default(now()) @map("created_at") @db.Timestamptz(6)
+  patient      Patient    @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  checkIn      CheckIn?   @relation(fields: [checkInId], references: [id], onDelete: Cascade)
+  nurse        Nurse      @relation(fields: [nurseId], references: [id], onDelete: Cascade)
+
+  @@map("nurse_actions")
+}
+
+model Message {
+  id         String    @id @default(uuid()) @db.Uuid
+  patientId  String    @map("patient_id") @db.Uuid
+  fromRole   Role      @map("from_role")
+  authorName String    @map("author_name")
+  body       String
+  readAt     DateTime? @map("read_at") @db.Timestamptz(6)
+  createdAt  DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  patient    Patient   @relation(fields: [patientId], references: [id], onDelete: Cascade)
+
+  @@map("messages")
+}
+
+model CallRequest {
+  id             String            @id @default(uuid()) @db.Uuid
+  patientId      String            @map("patient_id") @db.Uuid
+  caregiverId    String            @map("caregiver_id") @db.Uuid
+  preferredTimes DateTime[]        @map("preferred_times") @db.Timestamptz(6)
+  note           String
+  status         CallRequestStatus @default(requested)
+  confirmedFor   DateTime?         @map("confirmed_for") @db.Timestamptz(6)
+  createdAt      DateTime          @default(now()) @map("created_at") @db.Timestamptz(6)
+  patient        Patient           @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  caregiver      Caregiver         @relation(fields: [caregiverId], references: [id], onDelete: Cascade)
+
+  @@map("call_requests")
+}
