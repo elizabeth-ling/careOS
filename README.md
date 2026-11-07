@@ -23,7 +23,7 @@ CareOS connects the two sides with one simple loop:
 ```mermaid
 flowchart LR
     A[Family records<br/>a voice check-in] --> B[AI structures it<br/>across 8 care domains]
-    B --> C[Risk score compares it<br/>to the patient's own baseline]
+    B --> C[AI scores it on the<br/>interRAI rubric]
     C --> D[Nurse reviews a<br/>ranked triage queue]
     D --> E[Guidance or a call<br/>goes back to the family]
     E --> A
@@ -39,8 +39,8 @@ Walter, 82, has early dementia and lives at home with support from his daughter,
 
 1. **Sarah checks in.** She says: *"Dad barely touched his dinner again tonight... this morning he called me by my mom's name, which he's never done before... I'm pretty tired."*
 2. **CareOS shows what it heard.** Sarah sees plain-language notes on eating, memory and mood, medications, and how she's doing herself.
-3. **Walter reaches the top of the queue.** Nurse Priya sees him at #1 with a risk score of 82, flagged for new confusion and a three-week drop in appetite.
-4. **Priya sees the pattern.** The trend chart shows a gradual decline that would be easy to miss day to day. Highlighted quotes tie each finding to the transcript.
+3. **Walter reaches the top of the queue.** Nurse Priya sees him at #1 with a critical score of 82, flagged for new confusion and a three-week drop in appetite.
+4. **Priya sees the pattern.** The trend chart shows a gradual decline that would be easy to miss day to day. Each interRAI item score links to the quote it came from.
 5. **Priya responds.** She edits a suggested draft asking Sarah to look for signs of a UTI, then schedules a call.
 6. **Sarah gets the reply.** The guidance appears under Check-ins, and the call appears on her calendar.
 7. **The record travels.** Priya generates a care summary that can be printed or saved as a PDF.
@@ -51,24 +51,29 @@ Walter, 82, has early dementia and lives at home with support from his daughter,
 
 ## What makes it different
 
-**It looks for change, not just bad days.** Each patient is compared against their own recent baseline, so a gradual drift can surface even when no single check-in looks alarming.
+**It scores against a recognised clinical rubric.** Instead of inventing its own scale, CareOS scores each check-in against the interRAI rubric, the assessment framework used in home and long-term care. The LLM reads the caregiver's description and rates the relevant interRAI items. That result is the patient's **critical score**, and it ranks the triage queue.
 
-**The ranking is explainable.** Risk comes from visible rules rather than an opaque model score, so a nurse can see why someone is ranked where they are:
+| interRAI scale | What it captures | Range |
+|---|---|---|
+| CHESS | Health instability (appetite, weight loss, breathlessness, swelling) | 0–5 |
+| Cognitive Performance Scale (CPS) | Memory, decision-making, being understood | 0–6 |
+| ADL Hierarchy | Help needed with daily activities | 0–6 |
+| Depression Rating Scale (DRS) | Low mood, anxiety, withdrawal | 0–14 |
+| Pain Scale | Pain frequency and intensity | 0–4 |
 
-| Component | Points |
-|---|---|
-| Red flags | New confusion +25, fall +30, not eating for 2+ days +20, emergency terms +60 |
-| Domain severity | Sum of severities across domains × 6 |
-| Drift from baseline | +4 per domain above its 14-day baseline |
-| Total | Capped at 100 |
+Each scale is normalised and combined into a single critical score from 0 to 100.
+
+**Every score shows its evidence.** For each item it rates, the LLM must quote the caregiver's words that support it. A nurse sees which items drove the critical score and can check each one against the transcript.
+
+**It looks for change, not just bad days.** Each patient's scale scores are charted against their own recent baseline, so a gradual drift is visible even when no single check-in looks alarming.
 
 **It cares for the caregiver too.** Caregiver strain is tracked as its own domain, so a nurse can notice when the person providing care is struggling.
 
 ## Safety by design
 
 - **Nurses make the decisions.** AI ranks and drafts, but a nurse reviews and sends every response.
-- **AI output can be checked.** AI-generated content is labeled, and each highlighted quote must match the transcript exactly.
-- **Emergencies aren't left in a queue.** Terms like "chest pain" or "not breathing" immediately tell the family to call 911.
+- **AI output can be checked.** AI-generated content, including the critical score, is labeled, and each supporting quote must match the transcript exactly.
+- **Emergencies aren't left in a queue.** Terms like "chest pain" or "not breathing" immediately tell the family to call 911. This check is a fixed keyword rule, so it never depends on the LLM.
 - **Sources stay visible.** Care summaries separate what a nurse verified from what a family reported.
 
 ## What's real in this prototype
@@ -78,7 +83,8 @@ We want judges to know exactly what they're looking at.
 | Area | Status |
 |---|---|
 | Family and nurse screens, including the full response loop | Planned as working features |
-| Risk scoring, baselines, and trend insights | Planned as working logic, running on seeded data |
+| interRAI critical score | Planned: LLM scoring against the interRAI rubric |
+| Baselines and trend insights | Planned as working logic, running on seeded data |
 | Microphone recording and live level meter | Planned as working in the browser |
 | Transcription and domain extraction | **Simulated:** uses a scripted transcript and keyword rules |
 | Patients, families, and nurses | **Fictional:** seeded data with no real patient information |
@@ -113,9 +119,10 @@ The app includes demo controls, opened from the gear icon in the bottom-left cor
 
 ## What's next
 
-- **Real AI pipeline:** speech-to-text, then Claude with a strict JSON schema to extract the domains. Risk scoring stays rule-based so the ranking remains explainable.
+- **Real AI pipeline:** speech-to-text, then Claude with a strict JSON schema that returns the interRAI item scores and a supporting quote for each.
 - **Backend:** a server and a Postgres database to replace browser storage, with accounts and access controls for each care home.
-- **Clinical validation:** work with nurses to test and tune the scoring rules before any real-world use.
+- **Clinical validation:** interRAI is designed for trained assessors, not family self-report. Before real-world use, nurses would need to check how well LLM scores from caregiver descriptions match a full interRAI assessment.
+- **interRAI licensing:** the interRAI instruments are licensed, so a real deployment would need a licence from interRAI.
 - **Privacy and compliance:** a review of health privacy requirements before handling real patient data.
 
 ## Team
