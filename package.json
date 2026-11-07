@@ -15,7 +15,7 @@
     "db:studio": "npm run db:studio -w @careos/api --",
     "dev": "concurrently -n api,web -c green,cyan \"npm run dev -w @careos/api\" \"node scripts/dev-web.mjs\"",
     "test": "vitest run",
-    "typecheck": "tsc --noEmit -p packages/shared && tsc --noEmit -p apps/api && tsc --noEmit -p .",
+    "typecheck": "tsc --noEmit -p packages/shared && tsc --noEmit -p apps/api && tsc --noEmit -p apps/web && tsc --noEmit -p .",
     "smoke": "tsx scripts/smoke.ts"
   },
   "devDependencies": {
