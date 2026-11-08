@@ -66,6 +66,8 @@ export function FamilyHomePage() {
 
   return (
     <>
+      {/* Safety rule: an emergency check-in always shows the call-911 banner. */}
+      {data.lastCheckIn?.isEmergency && <EmergencyNotice className="mb-6" />}
       <PageTitle
         size="greeting"
         title={`${greetingFor()}, ${caregiver}`}

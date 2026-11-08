@@ -1,6 +1,7 @@
 import { DOMAIN_KEYS, DOMAIN_LABELS, type CheckIn, type NurseAction } from "@careos/shared";
 import { Check } from "lucide-react";
 import { useCheckIns, useNurseActions } from "@/api/hooks";
+import { EmergencyNotice } from "@/components/EmergencyNotice";
 import { SubPageHeader } from "@/components/family/SubPageHeader";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -63,6 +64,7 @@ function CheckInItem({ checkIn, reply, nurse }: { checkIn: CheckIn; reply?: Nurs
       <p className="text-sm text-muted-foreground">
         {formatDayTime(checkIn.createdAt)} · {formatDuration(checkIn.durationSec)}
       </p>
+      {checkIn.isEmergency && <EmergencyNotice className="mt-3" />}
       <p className="mt-1 text-base text-ink">{plainSummary(checkIn)}</p>
       <p className="mt-1 text-xs text-muted-foreground">AI summary · verify against transcript</p>
       <details className="mt-1 text-sm">
